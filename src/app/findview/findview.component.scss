@@ -1,0 +1,27 @@
+.inputBox {
+    border-radius: 7px;
+    padding: 15vh 21vw 15vh 21vw;
+
+    height: 400px;
+
+}
+
+input  {
+font-size: 120%;
+}
+
+mat-form-field {
+    font-size: 170%;
+}
+
+
+button {
+box-shadow: 0px 0px 3px black;
+
+transition: 100ms ease-in-out;
+
+&:hover {
+    color: #c2185b;
+}
+
+}

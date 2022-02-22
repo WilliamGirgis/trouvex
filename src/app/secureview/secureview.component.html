@@ -1,0 +1,76 @@
+<mat-card     fxLayoutGap="10px" fxLayout="column">
+  <form
+    novalidate
+    (ngSubmit)="onSubmit()"
+    [formGroup]="subscribeForm"
+    fxLayoutAlign="center start"
+    fxLayout="row"
+    fxLayoutGap="50px"
+  >
+    <div id="column1" fxLayout="column">
+      <mat-form-field>
+        <input formControlName="name" type="text" placeholder="Name" matInput />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          formControlName="surname"
+          type="text"
+          placeholder="Surname"
+          matInput
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          formControlName="tel"
+          type="tel"
+          placeholder="Telephone number"
+          matInput
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          formControlName="email"
+          type="email"
+          placeholder="Email"
+          matInput
+        />
+      </mat-form-field>
+      <button
+        [ngStyle]="{
+          opacity: isValid ? '1' : '0.5',
+          pointerEvents: isValid ? 'initial' : 'none'
+        }"
+        [disabled]="!isValid"
+        type="submit"
+        mat-button
+      >
+        Subscribe
+      </button>
+    </div>
+    <div id="column2" fxLayoutGap="25px" fxLayout="column">
+      <mat-form-field>
+        <input id="psw" placeholder="Password" type="{{type}}"  matInput fxLayout="row" />
+        <mat-icon style="cursor: pointer;"  (click)="showHidePassword()" matSuffix>remove_red_eye</mat-icon>
+    </mat-form-field>
+<mat-button-toggle-group>
+    <mat-button-toggle>
+        hey
+    </mat-button-toggle>
+    <mat-button-toggle>
+        hey2
+    </mat-button-toggle>
+    <mat-button-toggle>
+        hey3
+    </mat-button-toggle>
+    <mat-button-toggle>
+        hey4
+    </mat-button-toggle>
+</mat-button-toggle-group>
+    </div>
+
+    <div id="column3" fxLayoutGap="50px" fxLayout="column">
+    <input max="1"   accept=".jpg,.jpeg,.pdf,.png,.raw"  type="file">
+    <input max="1"   accept=".jpg,.jpeg,.pdf,.png,.raw"  type="file">
+</div>
+  </form>
+</mat-card>

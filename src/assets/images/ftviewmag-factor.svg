@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    id="svg1"
+    sodipodi:docname="viewmag_factor.svg"
+    viewBox="0 0 60 60"
+    sodipodi:version="0.32"
+    version="1.0"
+    y="0"
+    x="0"
+    inkscape:version="0.38.1"
+    sodipodi:docbase="/home/danny/flat/scalable/actions"
+  >
+  <sodipodi:namedview
+      id="base"
+      bordercolor="#666666"
+      inkscape:pageshadow="2"
+      inkscape:window-width="1016"
+      pagecolor="#ffffff"
+      inkscape:zoom="4.9119411"
+      inkscape:window-x="0"
+      borderopacity="1.0"
+      inkscape:cx="37.697483"
+      inkscape:cy="24.624508"
+      inkscape:window-y="0"
+      inkscape:window-height="685"
+      inkscape:pageopacity="0.0"
+  />
+  <path
+      id="path1187"
+      sodipodi:nodetypes="cccc"
+      style="stroke-linejoin:round;fill-rule:evenodd;stroke:#333333;stroke-linecap:round;stroke-width:3.125;fill:#b3b3b3"
+      d="m30.761 34.157c13.075 19.187 22.051 24.128 24.862 21.645 2.631-2.842-2.454-10.962-23.327-23.378l-1.535 1.733z"
+      sodipodi:stroke-cmyk="(0 0 0 0.8)"
+  />
+  <path
+      id="path1174"
+      sodipodi:rx="20.60380173"
+      sodipodi:ry="20.60380173"
+      style="fill-rule:evenodd;stroke:#333333;stroke-width:3.125;fill:#7f7f7f"
+      sodipodi:type="arc"
+      d="m47.866 28.06a20.604 20.604 0 1 0 -41.208 0 20.604 20.604 0 1 0 41.208 0h-20.604z"
+      transform="translate(-2.8791 -2.8791)"
+      sodipodi:cy="28.05961037"
+      sodipodi:cx="27.26179886"
+      sodipodi:stroke-cmyk="(0 0 0 0.8)"
+  />
+  <path
+      id="path1175"
+      sodipodi:rx="20.60380173"
+      sodipodi:ry="20.60380173"
+      style="fill-rule:evenodd;stroke:#333333;stroke-width:3.7079;fill:#cccccc"
+      sodipodi:type="arc"
+      d="m47.866 28.06a20.604 20.604 0 1 0 -41.208 0 20.604 20.604 0 1 0 41.208 0h-20.604z"
+      transform="matrix(.78722 0 0 .78722 2.7945 3.2188)"
+      sodipodi:cy="28.05961037"
+      sodipodi:cx="27.26179886"
+      sodipodi:stroke-cmyk="(0 0 0 0.8)"
+      sodipodi:fill-cmyk="(0 0 0 0.2)"
+  />
+  <path
+      id="path839"
+      style="stroke-width:1pt;fill:#333333"
+      d="m21.473 27.652v-2.448c0-0.505 0.104-0.89 0.312-1.158 0.207-0.267 0.46-0.45 0.757-0.549 0.296-0.099 0.741-0.202 1.335-0.311 1.543-0.287 2.315-1.064 2.315-2.33 0-0.514-0.208-0.974-0.623-1.38-0.406-0.416-0.94-0.623-1.603-0.623-0.613 0-1.098 0.118-1.454 0.356-0.346 0.237-0.693 0.584-1.039 1.039-0.336 0.445-0.663 0.786-0.979 1.023-0.307 0.228-0.727 0.342-1.262 0.342-0.603 0-1.122-0.228-1.558-0.683-0.425-0.465-0.638-1.009-0.638-1.632 0-1.088 0.356-2.043 1.069-2.864 0.712-0.821 1.602-1.449 2.671-1.885 1.068-0.435 2.132-0.653 3.19-0.653 1.039 0 2.008 0.154 2.909 0.46 0.9 0.307 1.696 0.757 2.389 1.351 0.692 0.593 1.231 1.316 1.617 2.166 0.396 0.841 0.594 1.781 0.594 2.82 0 1.86-0.47 3.304-1.41 4.333-0.93 1.019-2.211 1.696-3.843 2.033v0.593c0 0.475-0.104 0.896-0.312 1.262-0.198 0.356-0.48 0.638-0.846 0.845-0.356 0.198-0.762 0.297-1.217 0.297s-0.865-0.099-1.231-0.297c-0.356-0.207-0.638-0.489-0.846-0.845-0.198-0.366-0.297-0.787-0.297-1.262zm-0.267 6.396c0-0.475 0.119-0.915 0.356-1.321 0.247-0.415 0.574-0.747 0.98-0.994 0.405-0.247 0.84-0.371 1.305-0.371s0.901 0.124 1.306 0.371c0.406 0.247 0.727 0.579 0.965 0.994 0.247 0.406 0.371 0.846 0.371 1.321 0 0.485-0.124 0.935-0.371 1.35-0.238 0.406-0.564 0.727-0.98 0.965-0.405 0.237-0.836 0.356-1.291 0.356s-0.89-0.119-1.305-0.356c-0.406-0.238-0.733-0.559-0.98-0.965-0.237-0.415-0.356-0.865-0.356-1.35z"
+  />
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >ftviewmag factor</dc:title
+        >
+        <dc:date
+          >2011-01-31T02:06:54</dc:date
+        >
+        <dc:description
+          >Originally uploaded by Danny Allen for OCAL 0.18 this icon is part of the flat theme</dc:description
+        >
+        <dc:source
+          >https://openclipart.org/detail/114763/ftviewmag-factor-by-anonymous</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >Anonymous</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+        <dc:subject
+          >
+          <rdf:Bag
+            >
+            <rdf:li
+              >flat</rdf:li
+            >
+            <rdf:li
+              >icon</rdf:li
+            >
+            <rdf:li
+              >theme</rdf:li
+            >
+          </rdf:Bag
+          >
+        </dc:subject
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>

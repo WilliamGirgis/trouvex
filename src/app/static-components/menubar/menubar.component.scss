@@ -1,0 +1,63 @@
+#menubar {
+    top: 0;
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 7vh;
+
+}
+  
+  #menu-lang {
+
+    position: relative;
+    width: 100px;
+    min-height: 25px;
+    max-height: 200px;
+    border: 1px solid rgb(172, 172, 172);
+
+    border-radius: 14px;
+    display: flex;
+margin: auto 10px auto auto;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    transition: 300ms ease-in-out;
+    overflow: hidden;
+    background-color: rgba(233, 233, 233, 0.671);
+    svg {
+      position: absolute;
+      margin: auto;
+      transition: 350ms ease-in-out;
+      cursor: pointer;
+      bottom: 0;
+    }
+  }
+  
+  #select {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+  
+    height: 100%;
+    overflow: hidden;
+    div {
+      overflow: hidden;
+      margin: 10px auto 15px auto;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+    }
+    #fr {
+      margin-top: 0;
+    }
+  }
+
+
+  
+
+  
