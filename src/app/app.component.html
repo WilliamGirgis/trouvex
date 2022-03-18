@@ -1,17 +1,22 @@
 
-<div class="container">
-    <app-menubar></app-menubar>
-    <app-volet></app-volet>
-
-
-
+<mat-card style="padding: auto 0 auto 0;"   class="container">
+    <a mat-raised-button style="position: fixed; right: 10px; z-index: 15;" mat-button (click)="openLoginForm()"><span class="fa fa-sign-in fa-lg"></span>    Login</a>
+    <a mat-raised-button style="position: fixed; left: 10px; z-index: 15;" mat-button (click)="logout()"><span class="fa fa-sign-in fa-lg"></span>    Logout</a>
     <h1>Trouvex</h1>
 
+    <app-volet style="position: absolute;"></app-volet>
+
+
+
+
+
+    <div id="navigation">
+    <app-menubar></app-menubar>
 
 <router-outlet></router-outlet>
-   
-
 </div>
+
+</mat-card>
 
 
 

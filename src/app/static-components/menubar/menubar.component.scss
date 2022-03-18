@@ -1,11 +1,26 @@
 #menubar {
-    top: 0;
-    position: fixed;
+
     display: flex;
     width: 100%;
-    height: 7vh;
+    height: auto;
+   min-height: 75px;
+align-items: flex-start;
+justify-content: center; // Centrer le "after" au centre
+background-color: #424242;
+
+&::after {
+  
+  position: absolute;
+  content: " ";
+  background-color: rgb(184, 65, 89);
+  width: 98%;
+  height: 1px;
+  align-self: flex-end; // Putain ça marche
 
 }
+}
+
+
   
   #menu-lang {
 
@@ -13,23 +28,30 @@
     width: 100px;
     min-height: 25px;
     max-height: 200px;
-    border: 1px solid rgb(172, 172, 172);
+color: rgb(172, 172, 172);
 
-    border-radius: 14px;
+    border-radius: 3px;
     display: flex;
-margin: auto 10px auto auto;
+margin: auto 0 auto auto;
     align-items: center;
     justify-content: center;
     align-self: center;
-    transition: 300ms ease-in-out;
+    transition: 250ms ease-in-out;
     overflow: hidden;
-    background-color: rgba(233, 233, 233, 0.671);
+    background-color: #424242;
+        z-index: 5;
     svg {
       position: absolute;
-      margin: auto;
-      transition: 350ms ease-in-out;
+      align-items: center;
+      justify-content: center;
+      transition: 250ms ease-in-out;
       cursor: pointer;
       bottom: 0;
+      
+      &:hover {
+
+        color: crimson;
+      }
     }
   }
   
@@ -42,18 +64,59 @@ margin: auto 10px auto auto;
     align-items: center;
     justify-content: center;
     align-self: center;
-  
+  font-size: 120%;
     height: 100%;
     overflow: hidden;
     div {
       overflow: hidden;
-      margin: 10px auto 15px auto;
+      margin: 7px auto 10px auto;
       justify-content: center;
       align-content: center;
       align-items: center;
+      transition: 150ms ease-in-out;
+      cursor: pointer;
+      &:hover {
+        color: crimson;
+      }
     }
     #fr {
       margin-top: 0;
+    }
+  }
+
+
+  .mat-l-i {
+
+
+    span {
+margin: 0 auto auto auto;
+      width: fit-content;
+      cursor: pointer;
+
+
+      transition: 150ms ease-in-out;
+      &:hover {
+        color: crimson;
+      }
+    }
+  }
+
+
+  .active {
+    position: relative;
+    
+    &::before {
+      position: absolute;
+
+      content: " ";
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      bottom: -50%;
+      right: -18%;
+      border-radius: 3px;
+padding: 10px;
+      background-color: rgba(104, 8, 27, 0.486);
     }
   }
 

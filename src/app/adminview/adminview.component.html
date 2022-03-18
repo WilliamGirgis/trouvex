@@ -1,0 +1,22 @@
+<form fxFlex="100" fxLayout="column" fxLayoutAlign="center center" novalidate (submit)="save(id.value,psw.value)" [formGroup]="saveForm">
+  <mat-form-field>
+    <input #id formControlName="id" matInput type="text" placeholder="ID" />
+  </mat-form-field>
+  <mat-form-field
+    ><input #psw formControlName="psw" matInput type="text" placeholder="Password"
+  /></mat-form-field>
+
+  <div>
+  <button mat-raised-button type="submit">Save</button>
+</div>
+</form>
+<mat-card>
+  <mat-list *ngFor="let user of userList">
+    <mat-list-item>{{user}}</mat-list-item>
+  </mat-list>
+  
+</mat-card>
+
+
+{{successMsgSaved}}
+

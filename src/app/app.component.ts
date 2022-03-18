@@ -1,7 +1,9 @@
 import { animate, animateChild, group, query, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
+import { MatDialog,MatDialogRef } from '@angular/material/dialog';
 import { RouterOutlet } from '@angular/router';
-
+import { LoginComponent } from './static-components/login/login.component';
+import { AuthService } from 'src/app/services/AuthService.service';
 export const rightSlide =
   trigger('routeAnimations', [
     state('main', style({
@@ -21,31 +23,7 @@ export const rightSlide =
 
       animate(500)
   ]),
-    
-   /* transition('Home => *, Values => Contact,Values => Machines,Contact => Machines,* => Contact,Prof => Contact, Machines => Prof, Values => Prof', [
-      style({ position: 'relative' }),
-      query(':enter, :leave', [
-        style({
-          position: 'absolute',
-          left: 0,
-          width: '100%',
-
-        })
-      ],{ optional: true }),
-      query(':enter', [
-        style({ left: '100%' }) // left : 100% to change the direction
-        
-      ],{ optional: true }),
-      query(':leave', animateChild(),{ optional: true }),
-      group([
-        query(':leave', [
-          animate('400ms ease-in-out', style({left: '-100%' }))// left -100% to change the direction
-        ],{ optional: true }),
-        query(':enter', [
-          animate('400ms ease-in-out', style({ left: '0%' }))
-        ],{ optional: true })
-      ]),
-    ])*/
+  
   ]);
 
 
@@ -59,9 +37,20 @@ export const rightSlide =
 
 export class AppComponent {
 
+  constructor( public dialog:MatDialog,private authService:AuthService) {
+
+  }
+  openLoginForm() {
+    this.dialog.open(LoginComponent, {width:'500px',height:'450px'})
+  }
   prepareRoute(outlet: RouterOutlet) {
 
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+  }
+
+  logout() {
+    this.authService.logout()
+    window.location.reload()
   }
   title = 'portfolio';
 }

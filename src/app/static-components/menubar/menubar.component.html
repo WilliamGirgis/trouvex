@@ -1,24 +1,29 @@
-<div id="menubar">
+<div fxFlex fxFill id="menubar">
+<mat-list fxFlex  fxLayout="row" id="links">
+  <mat-list-item  routerLink="home" class="mat-l-i" fxFlex="12"><div routerLinkActive="active"><span  >HOME</span></div></mat-list-item>
+  <mat-list-item  routerLink="secure" class="mat-l-i" fxFlex="12"><div><span routerLinkActive="active">SECURE</span></div></mat-list-item>
+  <mat-list-item class="mat-l-i" fxFlex="12"><div><span routerLinkActive="active">CONTACT</span></div></mat-list-item>
+  <mat-list-item  class="mat-l-i" fxFlex="12"><div><span routerLinkActive="active">ABOUT US</span></div></mat-list-item>
+</mat-list>
 <div
 id="menu-lang"
 [ngStyle]="{
-  height: isLangMenuSet ? '175px' : '25px'
+  height: isLangMenuSet ? '150px' : '25px'
 }"
 >
 <li id="select">
-  <div id="fr">fr</div>
-  <div id="en">en</div>
-  <div id="de">de</div>
+  <div id="fr">FR</div>
+  <div id="en">EN</div>
+  <div id="de">DE</div>
 </li>
-
 <svg
   (click)="setLangMenu()"
   [ngStyle]="{
     display: isLangMenuSet ? 'none' : 'inline'
   }"
   xmlns="http://www.w3.org/2000/svg"
-  width="25"
-  height="25"
+  width="27"
+  height="27"
   fill="currentColor"
   class="bi bi-arrow-down-short"
   viewBox="0 0 16 16"
@@ -28,6 +33,7 @@ id="menu-lang"
     d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"
   />
 </svg>
+
 <svg
   (click)="setLangMenu()"
   [ngStyle]="{
@@ -45,4 +51,5 @@ id="menu-lang"
   />
 </svg>
 </div>
+
 </div>

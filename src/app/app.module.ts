@@ -18,7 +18,18 @@ import {MatCardModule} from '@angular/material/card'
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { SecureviewComponent } from './secureview/secureview.component';
 import {MatIconModule} from '@angular/material/icon'
-
+import {MatListModule} from '@angular/material/list'
+import {MatMenuModule} from '@angular/material/menu'
+import {HttpService} from 'src/app/services/http.service';
+import { LoginComponent } from './static-components/login/login.component'
+import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatDialogModule} from '@angular/material/dialog'
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {WebReqInterceptorService} from 'src/app/services/webReqinterceptor.service'
+import { AdminviewComponent } from './adminview/adminview.component';
+import { AdminGuard } from 'src/app/guards/admin-guard';
 const routes: Routes = [
   {
     path: '',
@@ -27,18 +38,21 @@ const routes: Routes = [
   },
   {path:'find',component:FindviewComponent},
   {path:'home',component:HomeviewComponent},
-  {path:'secure',component:SecureviewComponent}
+  {path:'secure',component:SecureviewComponent},
+  {path:'admin',component:AdminviewComponent,canActivate:[AdminGuard]}
 ];
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     VoletComponent,
     MenubarComponent,
     FindviewComponent,
     HomeviewComponent,
-    SecureviewComponent
-  ],
+    SecureviewComponent,
+    LoginComponent,
+      AdminviewComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -53,9 +67,16 @@ const routes: Routes = [
     MatCardModule,
     FormsModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatProgressSpinnerModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpService,{provide:HTTP_INTERCEPTORS,useClass:WebReqInterceptorService,multi:true},AdminGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

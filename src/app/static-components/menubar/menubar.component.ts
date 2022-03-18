@@ -14,6 +14,11 @@ export class MenubarComponent implements OnInit {
 
   setLangMenu() {
     this.isLangMenuSet = !this.isLangMenuSet;
+if(this.isLangMenuSet) {
+  document.getElementById('menu-lang').style.backgroundColor = "rgb(99, 32, 46)"
+} else {
+  document.getElementById('menu-lang').style.backgroundColor = "transparent"
+}
   }
 
 }
