@@ -19,6 +19,8 @@ export class AuthService {
     private router: Router
   ) {}
 
+  isConnected:Boolean = !!localStorage.getItem('user-id')
+
   login(id: string, password: string) {
     return this.WebService.loginClient(id, password).pipe( // Créer la fonction loginClient
       shareReplay(), // avoid users starting multiple execution of this method
@@ -36,12 +38,14 @@ export class AuthService {
     localStorage.setItem('user-id', id);
     localStorage.setItem('access-Token', accessToken);
     localStorage.setItem('refresh-Token', refreshToken);
+    this.isConnected = !!localStorage.getItem('user-id')
   }
 
   private removeSession() {
     localStorage.removeItem('user-id');
     localStorage.removeItem('access-Token');
     localStorage.removeItem('refresh-Token');
+    this.isConnected = !!localStorage.getItem('user-id')
   }
 
   logout() {

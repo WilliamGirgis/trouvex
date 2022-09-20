@@ -24,7 +24,7 @@ export class AdminGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.getAdmin(); // true
+    return this.getAdmin(); 
   }
 
   async getAdmin(): Promise<boolean> {
@@ -35,10 +35,10 @@ export class AdminGuard implements CanActivate {
         responseType: 'text',
       })
       .toPromise();
-    if (localStorage.getItem('user-id') === data) {
+    if (localStorage.getItem('user-id') == data ) {
       return true;
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
       return false;
     }
   }

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { SecureViewComponent } from './secureView.component';
+import { ContactViewComponent } from './contactView.component';
 
-describe('SecureViewComponent', () => {
-  let component: SecureViewComponent;
-  let fixture: ComponentFixture<SecureViewComponent>;
+describe('ContactViewComponent', () => {
+  let component: ContactViewComponent;
+  let fixture: ComponentFixture<ContactViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SecureViewComponent ]
+      declarations: [ ContactViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SecureViewComponent);
+    fixture = TestBed.createComponent(ContactViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

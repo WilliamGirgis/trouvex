@@ -4,6 +4,7 @@ const userRoutes = require('./server/routes/user')
 //const fileRoutes = require('./server/routes/file')
 const mailRoutes = require('./server/routes/mail')
 const objectRoutes = require('./server/routes/object')
+const image = require('./server/routes/image')
 //const publicationRoutes = require('./server/routes/publication')
 const http = require('http');
 const app = express();
@@ -19,13 +20,14 @@ app.use(express.static(path.join(__dirname,'dist/portfolio'))); // Production di
 app.use('/user',userRoutes);
 app.use('/mail',mailRoutes);
 app.use('/object',objectRoutes);
+app.use('/image',image);
 
 app.get('*',(req,res) => { //Catch all others routes request and return  the index
     res.sendFile(path.join(__dirname,'dist/portfolio/index.html'))
 })
 
 app.listen(port,(req,res) =>{
-    console.log("listening on port:" + port)
+
 })
 
 

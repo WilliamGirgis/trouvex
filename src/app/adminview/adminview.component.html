@@ -1,22 +1,173 @@
-<form fxFlex="100" fxLayout="column" fxLayoutAlign="center center" novalidate (submit)="save(id.value,psw.value)" [formGroup]="saveForm">
+
+
+<div id="wrapper">
+    <table fxFlex="100" mat-table [dataSource]="dataSource"  multiTemplateDataRows>
+
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+
+      <!-- id Column -->
+      <ng-container  matColumnDef="ID">
+        <th  mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+ 
+      </ng-container>
+    
+      <!-- firstname Column -->
+      <ng-container   matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef> Firstname </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstname}}</td>
+   
+      </ng-container>
+    
+      <!-- lastname Column -->
+      <ng-container matColumnDef="lastname">
+        <th mat-header-cell *matHeaderCellDef> Lastname </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+    </ng-container>
+    
+      <!-- tel Column -->
+      <ng-container matColumnDef="tel">
+        <th mat-header-cell *matHeaderCellDef> Tel. </th>
+        <td mat-cell *matCellDef="let element"> {{element.tel}} </td>
+ 
+      </ng-container>
+  
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Mail </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}}</td>
+        
+      </ng-container>
+        
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef> Country </th>
+        <td mat-cell *matCellDef="let element"> {{element.country}}</td>
+        
+      </ng-container>
+
+      <ng-container  matColumnDef="Search">
+
+        <th mat-header-cell *matHeaderCellDef><h4>      
+          <mat-form-field  fxLayoutAlign="center center" >
+          
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+          </mat-form-field></h4></th>
+        <td fxLayoutAlign="center center" mat-cell *matCellDef="let element"><button   (click)="deleteUser(element.id)"  mat-raised-button (mouseenter)="unsetDataRownAnimation()" (mouseleave)="setDataRownAnimation()">Delete</button></td>
+
+      </ng-container>
+      
+
+
+      <ng-container  matColumnDef="expandedDetail">
+        <td  mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length +1">
+          <div  class="example-element-detail"
+               [@detailExpand]="element == expandedElement && !isOverDeleteButton ? 'expanded' : 'collapsed'">
+     
+            <div id="expandee" class="example-element-description">
+  <div id="expandeeItems"   *ngFor="let el of element.possesions">
+
+    <div id="possesion">
+    <a routerLink="" >{{el.name}}</a>
+    <img src="{{el.image}}">  
+    {{el.image}}
+  </div>
+  </div>
+  
+            </div>
+          </div>
+        </td>
+      </ng-container>
+  
+  
+  
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+          class="example-element-row"
+          [class.example-expanded-row]="expandedElement === element "
+          (click)="expandedElement = expandedElement === element  ? null : element;">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+    </table>
+
+    <div style="align-self: center;margin:50px">
+<button mat-raised-button (click)="setUserview('add_user')" >Add a user</button>
+<button mat-raised-button (click)="setUserview('add_object')" >Add an object</button>
+</div>
+<form *ngIf="selectedAction== 'add_user'"  novalidate  fxLayoutAlign="center" (submit)="save(id.value,fname.value,lname.value,tel.value,email.value,country.value,password.value)" [formGroup]="saveUserForm">
+  
+  <div fxFlex="45" fxLayout="column" fxLayoutAlign="center"  >
   <mat-form-field>
     <input #id formControlName="id" matInput type="text" placeholder="ID" />
   </mat-form-field>
   <mat-form-field
-    ><input #psw formControlName="psw" matInput type="text" placeholder="Password"
-  /></mat-form-field>
+    >
+    <input #password formControlName="password" matInput type="text" placeholder="Password"
+  />
+</mat-form-field>
 
-  <div>
+<mat-form-field>
+  <input #fname formControlName="fname" type="text" matInput placeholder="Firstname">
+</mat-form-field>
+
+<mat-form-field>
+  <input #lname formControlName="lname" type="text" matInput placeholder="Lastname">
+</mat-form-field>
+
+<mat-form-field>
+  <input #tel formControlName="tel" type="text" matInput placeholder="Tel. number">
+</mat-form-field>
+
+<mat-form-field>
+  <input #email formControlName="email" type="text" matInput placeholder="Email">
+</mat-form-field>
+
+<mat-form-field>
+  <input #country formControlName="country" type="text" matInput placeholder="Country">
+</mat-form-field>
+
+<div style="align-self: center;">
   <button mat-raised-button type="submit">Save</button>
 </div>
+
+</div>
 </form>
-<mat-card>
-  <mat-list *ngFor="let user of userList">
-    <mat-list-item>{{user}}</mat-list-item>
-  </mat-list>
+
+<form *ngIf="selectedAction== 'add_object'" novalidate fxLayoutAlign="center" (submit)="addObject();" [formGroup]="saveObjectForm">
   
-</mat-card>
+  <div fxFlex="45" fxLayout="column" fxLayoutAlign="center"  >
+  <mat-form-field>
+    <input formControlName="user_id" matInput type="text" placeholder="user id" />
+  </mat-form-field>
 
+<mat-radio-group   formControlName="isLost" aria-label="isLost" formControlName="isLost">
+  <mat-label>Is the object lost ? </mat-label>
+  <mat-radio-button  value='true' style="margin-right:10px"> Yes </mat-radio-button>
+  <mat-radio-button  value="false" > No </mat-radio-button>
 
+</mat-radio-group>
+
+<mat-form-field>
+  <input formControlName="objectName" type="text" matInput placeholder="Name of the object">
+</mat-form-field>
+<label>Select an image to upload</label>
+<input
+type="file"
+id="fileUpload"
+ng2FileSelect
+accept=".png,.jpg,.jpeg,.pdf"
+[uploader]="uploader"
+/>
+
+<div style="align-self: center;">
+  <button *ngIf="selectedAction== 'add_user'" mat-raised-button type="submit">Save user</button>
+  <button *ngIf="selectedAction== 'add_object'" mat-raised-button type="submit" >Save object</button>
+</div>
+
+</div>
+</form>
 {{successMsgSaved}}
-
+</div>

@@ -1,9 +1,12 @@
+
 const express = require("express");
 const router = express.Router();
 
 const bcrypt = require("bcryptjs");
 
+const folder = "src/app/assets";
 
+const fs = require("fs");
 const path = require("path");
 
 const User = require("./user.model");
@@ -35,7 +38,7 @@ const verify = (req, res, next) => {
 
       if (isSessionValid) {
         console.log("session still valid")
-        next();
+          next();
       } else {
         console.log("session not valid anymore")
         return Promise.reject({
@@ -69,8 +72,8 @@ router.post("/users/login", (req, res) => {
   let id = req.body.id;
   let password = req.body.password;
   User.findByCredentials(id, password).then((user) => {
-    if(!user) {
-      res.status(400).send();
+    if(!user || user === undefined) {
+      return res.send().status(400);
     }
     return user
       .createSessions()
@@ -109,12 +112,13 @@ router.get("/users/id",authenticate, (req, res) => {
   let users = [];
   User.find({ id: { $regex: id, $options: "i" } })
     .then((users2) => {
+      //console.log("users = " + users2)
       users2.forEach((user) => {
         if(user.id !== 'Admin') {
-          users.push(user.id);
+          users.push({id:user.id,firstname:user.firstname,lastname:user.lastname,tel:user.tel,email:user.email,possesions:user.possesions,country:user.country});
         }
       });
-      return res.send(stringify(users));
+      return res.send(users);
     })
     .catch((e) => {
       res.send(e);
@@ -123,8 +127,12 @@ router.get("/users/id",authenticate, (req, res) => {
 
 router.get("/users/_id",authenticate, (req, res) => {
   let id = req.query.id;
+
   User.findOne({ id }).then((user) => {
-    return res.send(stringify(user._id));
+
+    return res.send(JSON.stringify(user._id).replaceAll("\"",""));
+  }).catch((e) => {
+    res.send(e)
   });
 });
 
@@ -149,7 +157,6 @@ router.post("/users/modify",authenticate, (req, res) => {
 router.post("/users", (req, res) => {
   let body = req.body;
   let newUser = new User(body);
-  console.log(body);
   newUser
     .save()
     .then(() => {
@@ -161,12 +168,12 @@ router.post("/users", (req, res) => {
       });
     })
     .then((authToken) => {
-      /* Created diretory with the '_id'*/
-     /* fs.mkdir(path.join(folder, stringify(newUser._id)), (err) => {
+
+      fs.mkdir(path.join(folder, stringify(newUser._id)), (err) => {
         if (err) {
           return console.error(err);
         }
-      });*/
+      });
       res
         .header("x-refresh-token", authToken.refreshToken)
         .header("x-access-token", authToken.accessToken)
@@ -175,6 +182,26 @@ router.post("/users", (req, res) => {
     .catch((e) => {
       console.log(e)
       res.status(400).send(e);
+    });
+});
+
+router.get("/users/del",authenticate, (req, res) => {
+  let id = req.query.id;
+
+  User.findOneAndDelete({ id: id })
+    .then((user) => {
+      fs.rm(folder + "/" + user._id, { recursive: true }, (err, suc) => {
+        console.log(user._id);
+        if (err) {
+          console.log("ERROR");
+        } else {
+          console.log("Folder deleted successfuly");
+        }
+      });
+      res.send(user);
+    })
+    .catch((e) => {
+      res.send(e);
     });
 });
 

@@ -1,10 +1,29 @@
 
-<mat-card style="padding: auto 0 auto 0;"   class="container">
-    <a mat-raised-button style="position: fixed; right: 10px; z-index: 15;" mat-button (click)="openLoginForm()"><span class="fa fa-sign-in fa-lg"></span>    Login</a>
-    <a mat-raised-button style="position: fixed; left: 10px; z-index: 15;" mat-button (click)="logout()"><span class="fa fa-sign-in fa-lg"></span>    Logout</a>
-    <h1>Trouvex</h1>
+<mat-card class="container">
 
-    <app-volet style="position: absolute;"></app-volet>
+
+    <mat-list fxLayoutAlign="end end" fxFlex="10" fxLayout="row">
+             
+
+        <mat-list-item fxFlex="12">
+            <a fxFlex="100" *ngIf="!isConnected" mat-raised-button mat-button   (click)="openLoginForm()">   Login</a>
+    
+            <a fxFlex="100" *ngIf="isConnected" mat-raised-button mat-button   (click)="logout()">   Logout</a>
+        </mat-list-item>
+      <mat-list-item *ngIf="isConnected" fxFlex="12"> <a fxFlex mat-raised-button mat-button   routerLink="/user">   User space</a></mat-list-item> 
+        
+<mat-list-item *ngIf="isConnected" fxFlex="12"><a fxFlex mat-raised-button  mat-button routerLink="/admin">   Admin space</a></mat-list-item>
+
+<mat-list-item fxFlex="12">
+    <a fxFlex="100" mat-raised-button mat-button   (click)="openRegisterForm()">   Register</a>
+</mat-list-item>
+
+    </mat-list>
+    <div>
+        <h1>Trouvex</h1>
+    </div>
+
+    <app-volet ></app-volet>
 
 
 

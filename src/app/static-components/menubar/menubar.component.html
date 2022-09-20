@@ -1,9 +1,9 @@
 <div fxFlex fxFill id="menubar">
 <mat-list fxFlex  fxLayout="row" id="links">
   <mat-list-item  routerLink="home" class="mat-l-i" fxFlex="12"><div routerLinkActive="active"><span  >HOME</span></div></mat-list-item>
-  <mat-list-item  routerLink="secure" class="mat-l-i" fxFlex="12"><div><span routerLinkActive="active">SECURE</span></div></mat-list-item>
-  <mat-list-item class="mat-l-i" fxFlex="12"><div><span routerLinkActive="active">CONTACT</span></div></mat-list-item>
-  <mat-list-item  class="mat-l-i" fxFlex="12"><div><span routerLinkActive="active">ABOUT US</span></div></mat-list-item>
+  <mat-list-item *ngIf="isConnected"  routerLink="secure" class="mat-l-i" fxFlex="12"><div><span routerLinkActive="active">SECURE</span></div></mat-list-item>
+  <mat-list-item routerLink="contact" class="mat-l-i" fxFlex="12"><div><span routerLinkActive="active">CONTACT</span></div></mat-list-item>
+  <mat-list-item routerLink="about"  class="mat-l-i" fxFlex="12"><div><span routerLinkActive="active">ABOUT US</span></div></mat-list-item>
 </mat-list>
 <div
 id="menu-lang"

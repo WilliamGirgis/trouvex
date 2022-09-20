@@ -1,0 +1,77 @@
+
+
+#expandee {
+    border: 1px brown solid;
+    width: 100%;
+    display: flex;
+
+    flex-direction: column;
+border-radius: 10px;
+}
+#possesion {
+  display: grid;
+}
+
+
+#expandeeItems {
+    justify-content: center;
+    margin:20px;
+
+    max-height: 100px;
+    a {
+        text-decoration: none;
+        color: white;
+    }
+}
+
+
+  
+  tr.example-detail-row {
+    height: 0;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):hover {
+
+    cursor: pointer;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):active {
+    cursor: pointer;
+  }
+  
+  .example-element-row td {
+    border-bottom-width: 0;
+z-index: 0;
+    cursor: pointer;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+
+
+  table {
+    height: 200px;
+
+
+  }
+
+  .notransition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+  }
+
+  #wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  #formawrap {
+
+    width: 100%;
+  }
+  

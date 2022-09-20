@@ -1,118 +1,62 @@
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup,Validators } from '@angular/forms';
-
+import { MatDialog } from '@angular/material/dialog';
+import { map } from 'rxjs/operators';
+import {BaseURL} from '../shared/basedurl'
 
 @Component({
-  selector: 'app-secureview',
-  templateUrl: './secureview.component.html',
-  styleUrls: ['./secureview.component.scss']
+  selector: 'app-secureView',
+  templateUrl: './secureView.component.html',
+  styleUrls: ['./secureView.component.scss']
 })
-export class SecureviewComponent implements OnInit {
+export class SecureViewComponent implements OnInit {
+  url2 = BaseURL + "/object/object"
 
-  type = 'password'
-
-
-  codes = [{lang:'FR',code:'+33 '},{lang:'US',code:"+1 "},{lang:'TR',code:'+90 '},{lang:'DE',code:'+49 '},{lang:'UK',code:'+44 '},{lang:'LU',code:'+352 '}]
-  currentCode = this.codes[0]
-  errorMessages = {
-    firstname: {
-      required:'First name is required.',
-
-
-    },
-    lastname: {
-      required:'Last name is required.',
-
-      
-    },
-    tel :{
-      required:'Tel. number is required',
-      pattern: 'Tel. number must contain only numbers.',
-    },
-    email: {
-      required:'Email is required',
-      email :'Email is not in valid format.'
-    },
-    password: {
-      required:'Password is required',
-      minlength: 'The password must contain at least 12 characters'
-
-    }
-  }
-
-
-  formErrors = { firstname: '', lastname: '', tel: '', email: '',password:'' };
-
-  subscribeForm:FormGroup = this.formBuilder.group({
-
-   firstname : ['',[Validators.required]],
-   lastname: ['', [Validators.required]],
-   tel : ['', [Validators.required],],
-   email: ['', [Validators.required,Validators.email]],
-   password: ['',[Validators.required,Validators.minLength(12)]]
-
+  objectList:JSON
+  objectTestList:JSON[] = []
+  //objListTest:Possesions[] = [{ ownerId: "625b12a789b0d2d00ee51cb6", lost: false, id: 1, name: "Stylo", code: "erherhes", image: null }]
+  //objTest
+  constructor( public dialog:MatDialog,private http:HttpClient) { 
+this.objectTestList.push(JSON.parse('{"ownerId":"6574839HBNGJG8353","lost" : false,"id":1,"name":"Stylo","code": "ERHZ765","image":null}'))
+   //this.objTest = JSON.stringify(this.objListTest).split(/"|\[|\]|,|\\|{|:|}/).filter(Boolean)
  
   }
-  );
-  isValid = this.subscribeForm.valid
 
-  constructor(private formBuilder:FormBuilder) {
-
-    this.subscribeForm.valueChanges.subscribe((data) => {
-      this.isValid = this.subscribeForm.valid
- const form = this.subscribeForm
-
-      for(const input in this.formErrors) {
- 
-        if(this.formErrors.hasOwnProperty(input)) {
-          console.log(1)
-          this.formErrors[input] =''
-          const control = form.get(input) //We take the control name
-          console.log("control.errors")
-          if(control && control.dirty && !control.valid) {
-            const messages = this.errorMessages[input]
-            for (const key in control.errors) {
-              if(control.errors.hasOwnProperty(key)) {
-                this.formErrors[input] += messages[key] + ' '
-              }
-            }
-          }
-        }
-
-      }
-   
+  attachmentList;
+getUserObject() {
+  this.http
+  .get(this.url2 + '/' + localStorage.getItem('user-id'), {
+    responseType: 'text'})
+  .pipe(
+    map((data2) => {
+      this.attachmentList = JSON.stringify(data2)
+        .split(/"|\[|\]|,|\\/)
+        .filter(Boolean);
     })
-   }
+  )
+  .subscribe((result) => {});
+}
 
 
-  ngOnInit(): void {
+getObject() {
 
-  }
+let header = new HttpHeaders().set('_id', localStorage.getItem('user-id'))
+  this.http.get(this.url2,{headers:header,responseType:'text'}).pipe((map((data) => {
+    data.split(/"|\[|\]|,|\\/).filter(Boolean)
+    this.objectList = JSON.parse(data)
+    
+    
+    console.log(this.objectList)
+    
 
-  onSubmit() {
-
+  }))).subscribe((result) => {})
   
+}
+
+  ngOnInit() {
+    this.getObject()
+
 
   }
-
-
-  showHidePassword() {
-
-    if(this.type === 'password') {
-      this.type = 'text'
-    } else {
-    this.type = 'password'
-    }
-  }
-
-  setLang(code) {
-
-    this.currentCode = code
-  }
-
-  labelAbsolute() {
-  
-  }
-  
 
 }

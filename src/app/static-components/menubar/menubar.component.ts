@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthService } from 'src/app/services/AuthService.service';
 @Component({
   selector: 'app-menubar',
   templateUrl: './menubar.component.html',
@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenubarComponent implements OnInit {
   isLangMenuSet = false
-  constructor() { }
+  isConnected:Boolean
+  constructor(private authService:AuthService) { 
+    this.isConnected = authService.isConnected
+  }
 
   ngOnInit(): void {
   }

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { SecureViewComponent } from './secureView.component';
+import { UserviewComponent } from './userview.component';
 
-describe('SecureViewComponent', () => {
-  let component: SecureViewComponent;
-  let fixture: ComponentFixture<SecureViewComponent>;
+describe('UserviewComponent', () => {
+  let component: UserviewComponent;
+  let fixture: ComponentFixture<UserviewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SecureViewComponent ]
+      declarations: [ UserviewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SecureViewComponent);
+    fixture = TestBed.createComponent(UserviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
