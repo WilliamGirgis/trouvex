@@ -11,7 +11,7 @@ import { map } from 'rxjs/internal/operators/map';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
+  sucessMsg?:string
   /*constructor(public dialogRef:MatDialogRef<RegisterComponent>,private http:HttpService,private authService:AuthService) { }
 
   ngOnInit() {
@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   msg:String = ""
   submited=false;
- */ 
+ */
   readonly registerUserURL = 'http://localhost:4200/user/users';
 
   save(id: string,firstname:string,lastname:string,tel:string,email:string,country:string, password: string) {
@@ -31,13 +31,17 @@ export class RegisterComponent implements OnInit {
     .pipe(
       map((data) => {
 
+        this.sucessMsg = "Vous êtes bel et bien inscrit !"
+setTimeout(() =>{
+  this.sucessMsg = undefined
+},2000)
       })
     )
     .subscribe((result) => {});
 }
 
 
-  
+
   type = 'password'
 
 
@@ -59,7 +63,7 @@ export class RegisterComponent implements OnInit {
     lastname: {
       required:'Last name is required.',
 
-      
+
     },
     tel :{
       required:'Tel. number is required',
@@ -85,7 +89,7 @@ export class RegisterComponent implements OnInit {
    country: ['',[Validators.required]],
    password: ['',[Validators.required,Validators.minLength(12)]]
 
- 
+
   }
   );
   isValid = this.subscribeForm.valid
@@ -97,7 +101,7 @@ export class RegisterComponent implements OnInit {
  const form = this.subscribeForm
 
       for(const input in this.formErrors) {
- 
+
         if(this.formErrors.hasOwnProperty(input)) {
           console.log(1)
           this.formErrors[input] =''

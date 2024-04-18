@@ -10,7 +10,7 @@ export class VoletComponent implements OnInit {
   initZip = 2;
   isButSet = false;
   isLangMenuSet = false
-  isLeftMenuUp = false
+  isLeftMenuUp = true
 
 
   setLeftMenu() {

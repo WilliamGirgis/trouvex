@@ -1,33 +1,64 @@
-<div id="left-menu" [ngStyle]="{ left: isLeftMenuUp ? '0' : '-300px',boxShadow: isLeftMenuUp ? '20px 0px 13px -10px  rgba(0,0,0,0.6)' : 'none' }">
+
+
+<div id="volet" [ngStyle]="{ left: isLeftMenuUp ? '0' : '-30vw',boxShadow: isLeftMenuUp ? '20px 0px 13px -10px  rgba(0,0,0,0.6)' : 'none' }">
+
+  <div id="wrapper">
+
+<div id="titles">
+  <h1>Espace personnel</h1>
+</div>
+
+
   <div
     id="circle"
     (click)="setLeftMenu()"
     [ngStyle]="{ right: isLeftMenuUp ? '-30px ' : '' }"
   >
-    <svg
-      [ngStyle]="{
-        transform: isLeftMenuUp ? 'rotate(180deg)' : 'rotate(0deg)'
-      }"
-      id="barArrow"
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      fill="currentColor"
-      class="bi bi-arrow-bar-right"
-      viewBox="0 0 16 16"
-    >
-      <path
-        fill-rule="evenodd"
-        d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z"
-      />
-    </svg>
+<img       [ngStyle]="{
+  transform: isLeftMenuUp ? 'rotate(180deg)' : 'rotate(0deg)'
+}"
+id="barArrow" src="../../../assets/images/arrow.svg">
   </div>
+<div id="list">
+  <li>
+    <button
+    >Enregistrer un objets
+    <img  src="../../../assets/images/arrow.svg">
+
+    </button>
+  </li>
+  <li>
+       <button routerLink="user" >
+        Liste de possesions
+        <img src="../../../assets/images/arrow.svg">
+
+       </button>
+
+  </li>
+  <li>
+       <button routerLink="lost" >
+        Signaler une perte
+        <img src="../../../assets/images/arrow.svg">
+
+       </button>
+  </li>
+  <li>
+    <button routerLink="found" >
+      Signaler une trouvaille
+      <img src="../../../assets/images/arrow.svg">
+
+</button>
+
+  </li>
+  <li>
+       <button routerLink="map" >
+        Carte des objets trouvé
+<img src="../../../assets/images/globe-americas.svg">
+       </button>
+  </li>
 </div>
 
-<div
-  id="volet"
-  [ngStyle]="{
-    opacity: isSet ? '1' : '0',
-    visibility: isSet ? 'visible' : 'hidden'
-  }"
-></div>
+
+<button style="background-color:inherit" mat-raised-button>Langue</button>
+</div>
+</div>

@@ -4,5 +4,7 @@ export class Possesions {
         lost: Boolean
         name: String
         code: String
-        image:string
+        image:string | Blob
+        marque?:string
+        model?:string
 }

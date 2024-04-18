@@ -1,0 +1,15 @@
+<div id="wrapper">
+  <button id="leave" mat-icon-button mat-dialog-close>&times;</button>
+
+
+<form>
+
+  <span>Souhaitez-vous vraiment vous déconnecter ?</span>
+
+  <div id="button-wrp">
+    <button type="button" (click)="dialogRef.close(true)" mat-raised-button>Oui</button>
+    <button type="button" (click)="dialogRef.close(false)" mat-raised-button>Non</button>
+  </div>
+
+</form>
+</div>

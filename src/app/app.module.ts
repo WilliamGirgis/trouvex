@@ -11,7 +11,7 @@ import {CommonModule } from '@angular/common';
 import {MenubarComponent } from './static-components/menubar/menubar.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {FindviewComponent } from './findview/findview.component';
-import {HomeviewComponent } from './homeview/homeview.component'
+import {HomeviewComponent } from './views/userview/client-views/homeview/homeview.component'
 import {FlexLayoutModule } from '@angular/flex-layout';
 import {FlexModule } from '@angular/flex-layout';
 import {MatCardModule} from '@angular/material/card'
@@ -22,40 +22,44 @@ import {MatMenuModule} from '@angular/material/menu'
 import {HttpService} from 'src/app/services/http.service';
 import { LoginComponent } from './static-components/login/login.component'
 import {MatToolbarModule} from '@angular/material/toolbar'
-import {MatDialog, MatDialogModule} from '@angular/material/dialog'
+import { MatDialogModule} from '@angular/material/dialog'
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {WebReqInterceptorService} from 'src/app/services/webReqinterceptor.service'
-import { AdminviewComponent } from './adminview/adminview.component';
+import { AdminviewComponent } from './views/userview/adminview/adminview.component';
 import { AdminGuard } from 'src/app/guards/admin-guard';
 import { AuthGuard } from 'src/app/guards/AuthGuard';
-import { UserviewComponent } from './userview/userview.component';
+import { UserviewComponent } from './views/userview/userview.component';
 import {MatTableModule} from '@angular/material/table'
 import { FileUploadModule } from 'ng2-file-upload';
 import { MatRadioModule } from '@angular/material/radio';
 import { RegisterComponent } from './static-components/register/register.component';
-import { SecureViewComponent } from './secureView/secureView.component';
+import { SecureViewComponent } from './views/userview/client-views/secureview/secureview.component';
 import { ContactViewComponent } from './contactView/contactView.component';
 import { AboutViewComponent } from './aboutView/aboutView.component';
+import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
+import { ClientMapComponent } from './views/userview/client-views/client-map/client-map.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
+
   {path:'find',component:FindviewComponent},
-  {path:'home',component:HomeviewComponent},  
+  {path:'home',component:HomeviewComponent},
   {path:'secure',component:SecureViewComponent,canActivate:[AuthGuard]},
   {path:'about',component:AboutViewComponent},
   {path:'contact',component:ContactViewComponent},
   {path:'admin',component:AdminviewComponent,canActivate:[AdminGuard]},
-  {path:'user',component:UserviewComponent,canActivate:[AuthGuard]}
+  {path:'user',component:UserviewComponent,canActivate:[AuthGuard]},
+  {path:'map',component:ClientMapComponent}
+  ,{
+    path: '**',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
-  declarations: [					
+  declarations: [
     AppComponent,
     VoletComponent,
     MenubarComponent,
@@ -67,7 +71,9 @@ const routes: Routes = [
       RegisterComponent,
       SecureViewComponent,
       ContactViewComponent,
-      AboutViewComponent
+      AboutViewComponent,
+      LogoutDialogComponent,
+      ClientMapComponent
    ],
   imports: [
     BrowserModule,

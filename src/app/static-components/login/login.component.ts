@@ -1,10 +1,11 @@
 import {  HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {MatDialogRef} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {BaseURL} from 'src/app/shared/basedurl'
 import { HttpService } from 'src/app/services/http.service';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/AuthService.service';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,17 @@ import { AuthService } from 'src/app/services/AuthService.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public dialogRef:MatDialogRef<LoginComponent>,private http:HttpService,private authService:AuthService) {
+  constructor(public dialog:MatDialog,public dialogRef:MatDialogRef<LoginComponent>,private http:HttpService,private authService:AuthService) {
    }
 
   msg:string = ''
   submited:boolean = false
   error:boolean = false
+
+  openRegisterForm() {
+    this.dialogRef.close()
+    this.dialog.open(RegisterComponent, {width:"70vw",height:"fit-content"})
+  }
 
   ngOnInit(): void {
   }
@@ -39,5 +45,5 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  
+
 }

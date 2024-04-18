@@ -1,0 +1,31 @@
+<div id="wrapper" >
+
+  <mat-card *ngFor="let object of objects;i as index">
+
+
+<mat-card id="input-wrp">
+<img [src]="object.image">
+</mat-card>
+
+
+<ol >
+
+  <li *ngIf="object.name">
+  Objet : <em>{{object.name}}</em>
+  </li>
+  <li *ngIf="object.marque">
+   Marque : <em>{{object.marque}}</em>
+  </li>
+  <li *ngIf="object.model">
+   Model <em>{{object.model}}</em>
+  </li>
+  <li>
+   Code de l'objet : <em>{{object.code}}</em>
+  </li>
+  <li [style.color]="object.lost ? 'red' : 'green'">
+    {{object.lost ? "L'objet est signalé perdu" : "L'objet n'est pas signaler perdu"}}
+   </li>
+</ol>
+
+</mat-card>
+</div>

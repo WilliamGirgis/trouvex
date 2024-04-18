@@ -1,3 +1,76 @@
+#volet {
+  position: fixed;
+  bottom: 0;
+  height: 100%;
+  width: 30vw;
+  background-color: rgb(223, 223, 223);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 5;
+transition: 400ms ease;
+h1 {
+  color: #72aeff;
+  margin: 0;
+}
+}
+
+#wrapper {
+height: 90%;
+background-color: inherit;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+justify-content: space-between;
+}
+#list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+    height:75%;
+  width: 90%;
+min-width: max-content;
+  li {
+    width: 100%;
+    button {
+      border: none;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.63);
+      width: 100%;
+      min-height: 35px;
+      height: max-content;
+      border-radius: 3px;
+      cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 12px;
+font-size: 95%;
+      &:hover {
+        img {
+          transform: translateX(3px);
+        }
+      }
+      img {
+        transition: 175ms ease;
+        height: 21px;
+        width: 21px;
+      }
+    }
+  }
+
+}
+#titles {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 70%;
+  min-width: max-content;
+}
 
 #circle {
   display: flex;
@@ -5,37 +78,19 @@
   position: absolute;
 width: 100px;
 height: 100px;
-right: -30px; 
+right: -30px;
 bottom: 50%;
 margin-bottom: -50px;
-background-color: rgb(168, 168, 168);
+background-color: inherit;
 border-radius: 50%;
 transition: 350ms ease-in-out;
 justify-content: center;
 flex-direction: column;
 cursor: pointer;
 box-shadow: 20px 0px 13px -10px  rgba(0,0,0,0.6);
-
-
 &:hover {
-  right: -45px; 
+  right: -40px;
 }
-}
-#left-menu {
-  position: fixed;
-  bottom: 0;
-  height: 100%;
-  width: 300px;
-  background-color: rgb(168, 168, 168);
-
-  display: flex;
-align-items: flex-end;
-align-content: flex-end;
-align-self: flex-end;
-justify-content: right;
-left: -35%;
-z-index: 5;
-transition: 350ms ease-in-out;
 }
 
 #barArrow {
@@ -47,82 +102,6 @@ transition: 200ms ease-in-out;
   color: rgb(0, 0, 0);
 }
 
-#dark-button {
-  position: relative;
-  width: 50px;
-  height: 25px;
-  background-color: rgba(128, 128, 128, 0.5);
-  z-index: 3;
-margin: 20px 20px auto auto;
-  border-radius: 50px;
-  align-content: center;
-  align-self: flex-start;
-  align-items: center;
-  display: flex;
-  
-  #but {
-    width: 22px;
-    height: 22px;
-    margin-left: 2px;
-    background-color: black;
-    border-radius: 50px;
-    transition: 350ms ease-in-out;
-    cursor: pointer;
-    &:hover {
-      transform: translate(100%);
-    }
-  }
-}
-
-
-
-
-#volet {
-  position: fixed;
-  margin: auto;
-  height: 93%;
-  transition: 275ms ease-in-out;
-  background-color: rgba(255, 255, 255, 0.959);
-  border-radius: 5px;
-  overflow: hidden;
-  width: 100vw;
-  align-self: center;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  bottom: 0;
-}
-
-#x {
-  position: absolute;
-  margin-top: 9px;
-  left: 40px;
-  animation: switchX 350ms ease-in-out forwards;
-  z-index: 3;
-}
-
-#svg-wrap {
-  border: 1px solid black;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  height: fit-content;
-  width: fit-content;
-}
-
-#folder {
-  position: fixed;
-left: 0px;
-  align-content: center;
-  cursor: pointer;
-  z-index: 2;
-width: 100px;
-
-transition: 350ms ease-in-out;
-}
 
 #arrow {
   top: 2.5%;
@@ -132,7 +111,6 @@ transition: 350ms ease-in-out;
   align-self: center;
   z-index: 3;
   cursor: pointer;
-
   animation: switchArrow 350ms ease-in-out forwards;
 }
 
@@ -154,10 +132,3 @@ transition: 350ms ease-in-out;
     transform: rotate(325deg);
   }
 }
-
-/*     <img id="img1" width="40" height="40" src="/assets/images/turn-right-arrow.png">
-    <img id="img2" width="40" height="40" src="/assets/images/turn-right-arrow.png"> */
-
-/* [ngStyle]="{
-    height: isLangMenuSet ? 'fit-content' : '0'
-  }" */

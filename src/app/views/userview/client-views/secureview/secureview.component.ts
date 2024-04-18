@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
-import {BaseURL} from '../shared/basedurl'
+import {BaseURL} from '../../../../shared/basedurl'
+import { Possesions } from 'src/app/shared/possesions';
 
 @Component({
   selector: 'app-secureView',
@@ -12,14 +13,13 @@ import {BaseURL} from '../shared/basedurl'
 export class SecureViewComponent implements OnInit {
   url2 = BaseURL + "/object/object"
 
-  objectList:JSON
+  objectList:Possesions[] = [{code:'X9723',image:'',lost:false,name:'Téléphone',ownerId:'Xertzyuid'}]
   objectTestList:JSON[] = []
   //objListTest:Possesions[] = [{ ownerId: "625b12a789b0d2d00ee51cb6", lost: false, id: 1, name: "Stylo", code: "erherhes", image: null }]
   //objTest
-  constructor( public dialog:MatDialog,private http:HttpClient) { 
-this.objectTestList.push(JSON.parse('{"ownerId":"6574839HBNGJG8353","lost" : false,"id":1,"name":"Stylo","code": "ERHZ765","image":null}'))
+  constructor( public dialog:MatDialog,private http:HttpClient) {
    //this.objTest = JSON.stringify(this.objListTest).split(/"|\[|\]|,|\\|{|:|}/).filter(Boolean)
- 
+
   }
 
   attachmentList;
@@ -44,13 +44,13 @@ let header = new HttpHeaders().set('_id', localStorage.getItem('user-id'))
   this.http.get(this.url2,{headers:header,responseType:'text'}).pipe((map((data) => {
     data.split(/"|\[|\]|,|\\/).filter(Boolean)
     this.objectList = JSON.parse(data)
-    
-    
+
+
     console.log(this.objectList)
-    
+
 
   }))).subscribe((result) => {})
-  
+
 }
 
   ngOnInit() {

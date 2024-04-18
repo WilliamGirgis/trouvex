@@ -1,3 +1,25 @@
 h1 {
+  margin-top: 0;
     text-align: center;
+}
+form {
+  position: relative;
+}
+
+#leave {
+position: absolute;
+top: 0;
+right: 0;
+font-size: 150%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+#icon {
+  cursor: pointer;
+  transition: 250ms ease;
+  &:hover {
+    transform: scale(1.1);
+  }
 }

@@ -5,6 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from './static-components/login/login.component';
 import { AuthService } from 'src/app/services/AuthService.service';
 import { RegisterComponent } from './static-components/register/register.component';
+import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 
 export const rightSlide =
   trigger('routeAnimations', [
@@ -13,7 +14,7 @@ export const rightSlide =
       opacity: 0.8,
       backgroundColor: 'blue',
 
-    })), 
+    })),
     state('box', style({
       height: '100vh',
       opacity: 0.8,
@@ -25,7 +26,7 @@ export const rightSlide =
 
       animate(500)
   ]),
-  
+
   ]);
 
 
@@ -34,20 +35,25 @@ export const rightSlide =
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations:[rightSlide],
-  
-  
+
+
 })
 
 
 export class AppComponent {
 
   isConnected:Boolean
-
+  isAdmin:boolean
   constructor( public dialog:MatDialog,private authService:AuthService) {
 this.isConnected = authService.isConnected
   }
+  openLogoutDialog() {
+    this.dialog.open(LogoutDialogComponent, {width:'30vw',minWidth:'max-content',height:'max-content'}).afterClosed().subscribe((data) =>{
+      data ? this.logout() : null
+    })
+  }
   openLoginForm() {
-    this.dialog.open(LoginComponent, {width:'50vw',height:'70vh'})
+    this.dialog.open(LoginComponent, {width:'50vw',height:'max-content'})
   }
 
   openRegisterForm() {

@@ -1,0 +1,38 @@
+#wrapper {
+  position: relative;
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  align-items: center;
+  margin: auto;
+  height: 35vh;
+  justify-content: space-around;
+}
+
+#leave {
+  top: 0;
+  right:0;
+position: absolute;
+  align-self: flex-end;
+  font-size: 150%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+span {
+  font-size: 115%;
+text-align: center;
+line-height: 30px;
+}
+
+#button-wrp {
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+width: 100%;
+}

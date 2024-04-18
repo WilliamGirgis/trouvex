@@ -1,5 +1,5 @@
 
-<h1>Create your account</h1>
+
     <form
       novalidate
       (submit)="onSubmit()"
@@ -8,6 +8,10 @@
       fxLayout="column"
 
     >
+    <h1>Create your account</h1>
+
+    <button id="leave" mat-icon-button mat-dialog-close>&times;</button>
+
       <div fxFill fxLayout="row" fxLayoutGap="10vw">
         <div fxFlex fxLayoutGap="20px" id="column1" fxLayout="column">
             <mat-form-field>
@@ -30,7 +34,7 @@
             />
             <mat-error>{{formErrors.firstname}}</mat-error>
           </mat-form-field>
-  
+
           <mat-form-field>
             <input
               formControlName="lastname"
@@ -43,9 +47,9 @@
           </mat-form-field>
           <div fxFlex  fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="30px">
             <label fxFlex="5" id="label" style="width: fit-content;">{{currentCode.code}}</label>
-  
+
             <mat-form-field  fxFlex="100" fxLayout="row"  >
-  
+
             <input
               formControlName="tel"
               type="tel"
@@ -53,21 +57,21 @@
               matInput
               required
               pattern="[0-9\s]*"
-  
+
             />
-  
+
             <mat-error  *ngIf="formErrors.tel" >{{formErrors.tel}}</mat-error>
           </mat-form-field>
           <button style="border: none;background-color: rgb(94, 94, 94);" type="button" mat-button  [matMenuTriggerFor]="menu">{{currentCode.lang}} </button>
   <mat-menu id="langList"  yPosition="above" xPosition="after" fxLayoutAlign="space-evenly space-evenly"  #menu >
-  
+
   <button  fxFlex fxFill mat-menu-item *ngFor="let code of codes" (click)="setLang(code)">
   {{code.lang}}
   {{code.code}}
-  
+
   </button>
   </mat-menu>
-  
+
         </div>
           <mat-form-field>
             <input
@@ -80,7 +84,7 @@
           </mat-form-field>
         </div>
 
-        
+
         <div fxFill fxFlex id="column2" fxLayoutGap="25px" fxLayout="column">
 
             <mat-form-field>
@@ -105,14 +109,16 @@
             <mat-icon id="icon" (click)="showHidePassword()" matSuffix>remove_red_eye</mat-icon
             >
             <mat-error>{{formErrors.password}}</mat-error>
-          </mat-form-field>          
+          </mat-form-field>
+          <span style="color:green" *ngIf="sucessMsg" id="sucess-Msg">{{sucessMsg}}</span>
 
         </div>
+
       </div>
       <button
       fxFlex="25"
-        [ngStyle]="{fontSize:'140%',
-          opacity: isValid ? '1' : '0.5',
+        [ngStyle]="{fontSize:'110%',
+          opacity: isValid ? '1' : '0.8',
           pointerEvents: isValid  ? 'initial' : 'none'
         }"
         [disabled]="!isValid "
@@ -121,6 +127,7 @@
       >
         Subscribe
       </button>
+
     </form>
 
-  
+

@@ -6,22 +6,11 @@
    min-height: 75px;
 align-items: flex-start;
 justify-content: center; // Centrer le "after" au centre
-background-color: #424242;
-
-&::after {
-  
-  position: absolute;
-  content: " ";
-  background-color: rgb(184, 65, 89);
-  width: 98%;
-  height: 1px;
-  align-self: flex-end; // Putain ça marche
-
-}
+margin-bottom: 25px;
 }
 
 
-  
+
   #menu-lang {
 
     position: relative;
@@ -38,7 +27,6 @@ margin: auto 0 auto auto;
     align-self: center;
     transition: 250ms ease-in-out;
     overflow: hidden;
-    background-color: #424242;
         z-index: 5;
     svg {
       position: absolute;
@@ -47,14 +35,11 @@ margin: auto 0 auto auto;
       transition: 250ms ease-in-out;
       cursor: pointer;
       bottom: 0;
-      
-      &:hover {
 
-        color: crimson;
-      }
+
     }
   }
-  
+
   #select {
     width: 100%;
     display: flex;
@@ -75,9 +60,7 @@ margin: auto 0 auto auto;
       align-items: center;
       transition: 150ms ease-in-out;
       cursor: pointer;
-      &:hover {
-        color: crimson;
-      }
+
     }
     #fr {
       margin-top: 0;
@@ -95,16 +78,13 @@ margin: 0 auto auto auto;
 
 
       transition: 150ms ease-in-out;
-      &:hover {
-        color: crimson;
-      }
     }
   }
 
 
   .active {
     position: relative;
-    
+
     &::before {
       position: absolute;
 
@@ -116,11 +96,10 @@ margin: 0 auto auto auto;
       right: -18%;
       border-radius: 3px;
 padding: 10px;
-      background-color: rgba(104, 8, 27, 0.486);
     }
   }
 
 
-  
 
-  
+
+

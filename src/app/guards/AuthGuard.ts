@@ -8,12 +8,12 @@ import { LoginComponent } from '../static-components/login/login.component';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  
+
   constructor(public dialog:MatDialog,private router:Router){}
   openLoginForm() {
-    this.dialog.open(LoginComponent, {width:'500px',height:'fit-content'})
+    this.dialog.open(LoginComponent, {width:'50vw',height:'max-content'})
   }
-  
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
