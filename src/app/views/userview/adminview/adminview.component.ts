@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {BaseURL} from '../../../shared/basedurl'
 import {User} from 'src/app/shared/user'
 import { trigger ,style,state,transition,animate} from '@angular/animations';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 import { FileUploader } from 'ng2-file-upload';
 
 const uploadURL = BaseURL + '/image/upload';

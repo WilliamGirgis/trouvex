@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialogRef} from '@angular/material/dialog';
+import {MatLegacyDialogRef as MatDialogRef} from '@angular/material/legacy-dialog';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/internal/operators/map';
