@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/internal/operators/map';
 
@@ -79,7 +79,7 @@ setTimeout(() =>{
 
   formErrors = { id:'' ,firstname: '', lastname: '', tel: '', email: '',country:'',password:'' };
 
-  subscribeForm:FormGroup = this.formBuilder.group({
+  subscribeForm:UntypedFormGroup = this.formBuilder.group({
 
     id:['',[Validators.required,Validators.minLength(5)]],
    firstname : ['',[Validators.required]],
@@ -94,7 +94,7 @@ setTimeout(() =>{
   );
   isValid = this.subscribeForm.valid
 
-  constructor(private formBuilder:FormBuilder,public dialogRef:MatDialogRef<RegisterComponent>,private http:HttpClient) {
+  constructor(private formBuilder:UntypedFormBuilder,public dialogRef:MatDialogRef<RegisterComponent>,private http:HttpClient) {
 
     this.subscribeForm.valueChanges.subscribe((data) => {
       this.isValid = this.subscribeForm.valid
