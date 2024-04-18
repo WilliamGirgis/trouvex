@@ -8,15 +8,12 @@ import {VoletComponent } from 'src/app/static-components/volet/volet.component';
 
 import {CommonModule } from '@angular/common';
 import {MenubarComponent } from './static-components/menubar/menubar.component';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {FindviewComponent } from './findview/findview.component';
 import {HomeviewComponent } from './views/userview/client-views/homeview/homeview.component'
 
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon'
 import {HttpService} from 'src/app/services/http.service';
 import { LoginComponent } from './static-components/login/login.component'
-import {MatToolbarModule} from '@angular/material/toolbar'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {WebReqInterceptorService} from 'src/app/services/webReqinterceptor.service'
 import { AdminviewComponent } from './views/userview/adminview/adminview.component';
@@ -70,11 +67,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes, {}),
     CommonModule,
-    MatButtonToggleModule,
     FormsModule,
     ReactiveFormsModule,
-    MatIconModule,
-    MatToolbarModule,
     HttpClientModule  ],
   exports :[],
   providers: [HttpService,{provide:HTTP_INTERCEPTORS,useClass:WebReqInterceptorService,multi:true},AdminGuard,AuthGuard],
