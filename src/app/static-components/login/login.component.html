@@ -2,11 +2,11 @@
 <div id="wrp" >
 
         <button id="leave" mat-icon-button mat-dialog-close>&times;</button>
+        <h1>Connection</h1>
 
-<form (submit)="loginUser(id.value,psw.value)"  fxLayoutGap="10%"  fxLayout="column"  fxLayoutAlign="center center">
+<form (submit)="loginUser(id.value,psw.value)">
 
-    <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
-        <h1>Login</h1>
+
     <mat-form-field>
         <input placeholder="ID" #id type="text" matInput>
     </mat-form-field>
@@ -14,17 +14,8 @@
         <input placeholder="Password" #psw type="password" matInput>
     </mat-form-field>
     <button type="submit" mat-raised-button>Connection</button>
-</div>
 
-<div [hidden]="submited == false">
-    <mat-spinner  [diameter]="40"></mat-spinner>
-</div>
-<div  [hidden]="msg == ''">
-    <span >
-        {{msg}}
-    </span>
 
-</div>
 </form>
 
 <p>

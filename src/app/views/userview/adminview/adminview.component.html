@@ -1,88 +1,88 @@
 
 
 <div id="wrapper">
-    <table fxFlex="100" mat-table [dataSource]="dataSource"  multiTemplateDataRows>
+    <table  mat-table [dataSource]="dataSource"  multiTemplateDataRows>
 
-  
+
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
-    
+
 
       <!-- id Column -->
       <ng-container  matColumnDef="ID">
         <th  mat-header-cell *matHeaderCellDef> ID </th>
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
- 
+
       </ng-container>
-    
+
       <!-- firstname Column -->
       <ng-container   matColumnDef="firstname">
         <th mat-header-cell *matHeaderCellDef> Firstname </th>
         <td mat-cell *matCellDef="let element"> {{element.firstname}}</td>
-   
+
       </ng-container>
-    
+
       <!-- lastname Column -->
       <ng-container matColumnDef="lastname">
         <th mat-header-cell *matHeaderCellDef> Lastname </th>
         <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
     </ng-container>
-    
+
       <!-- tel Column -->
       <ng-container matColumnDef="tel">
         <th mat-header-cell *matHeaderCellDef> Tel. </th>
         <td mat-cell *matCellDef="let element"> {{element.tel}} </td>
- 
+
       </ng-container>
-  
+
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef> Mail </th>
         <td mat-cell *matCellDef="let element"> {{element.email}}</td>
-        
+
       </ng-container>
-        
+
       <ng-container matColumnDef="country">
         <th mat-header-cell *matHeaderCellDef> Country </th>
         <td mat-cell *matCellDef="let element"> {{element.country}}</td>
-        
+
       </ng-container>
 
       <ng-container  matColumnDef="Search">
 
-        <th mat-header-cell *matHeaderCellDef><h4>      
+        <th mat-header-cell *matHeaderCellDef><h4>
           <mat-form-field  fxLayoutAlign="center center" >
-          
+
             <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
           </mat-form-field></h4></th>
         <td fxLayoutAlign="center center" mat-cell *matCellDef="let element"><button   (click)="deleteUser(element.id)"  mat-raised-button (mouseenter)="unsetDataRownAnimation()" (mouseleave)="setDataRownAnimation()">Delete</button></td>
 
       </ng-container>
-      
+
 
 
       <ng-container  matColumnDef="expandedDetail">
         <td  mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length +1">
           <div  class="example-element-detail"
                [@detailExpand]="element == expandedElement && !isOverDeleteButton ? 'expanded' : 'collapsed'">
-     
+
             <div id="expandee" class="example-element-description">
   <div id="expandeeItems"   *ngFor="let el of element.possesions">
 
     <div id="possesion">
     <a routerLink="" >{{el.name}}</a>
-    <img src="{{el.image}}">  
+    <img src="{{el.image}}">
     {{el.image}}
   </div>
   </div>
-  
+
             </div>
           </div>
         </td>
       </ng-container>
-  
-  
-  
-  
+
+
+
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let element; columns: displayedColumns;"
           class="example-element-row"
@@ -98,7 +98,7 @@
 <button mat-raised-button (click)="setUserview('add_object')" >Add an object</button>
 </div>
 <form *ngIf="selectedAction== 'add_user'"  novalidate  fxLayoutAlign="center" (submit)="save(id.value,fname.value,lname.value,tel.value,email.value,country.value,password.value)" [formGroup]="saveUserForm">
-  
+
   <div fxFlex="45" fxLayout="column" fxLayoutAlign="center"  >
   <mat-form-field>
     <input #id formControlName="id" matInput type="text" placeholder="ID" />
@@ -137,7 +137,7 @@
 </form>
 
 <form *ngIf="selectedAction== 'add_object'" novalidate fxLayoutAlign="center" (submit)="addObject();" [formGroup]="saveObjectForm">
-  
+
   <div fxFlex="45" fxLayout="column" fxLayoutAlign="center"  >
   <mat-form-field>
     <input formControlName="user_id" matInput type="text" placeholder="user id" />

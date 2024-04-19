@@ -1,133 +1,100 @@
+<form novalidate (submit)="onSubmit()" [formGroup]="subscribeForm">
+  <h1>Create your account</h1>
+  <button id="leave" mat-icon-button mat-dialog-close>&times;</button>
+  <div id="coulmn-wrp">
+  <div id="column1">
+    <mat-form-field>
+      <mat-label>Pseudo</mat-label>
+      <input formControlName="id" type="text" matInput required />
+      <mat-error>{{ formErrors.id }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Prénom</mat-label>
+      <input formControlName="firstname" type="text" matInput required />
+      <mat-error>{{ formErrors.firstname }}</mat-error>
+    </mat-form-field>
 
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
 
-    <form
-      novalidate
-      (submit)="onSubmit()"
-      [formGroup]="subscribeForm"
-      fxLayoutAlign="center center"
-      fxLayout="column"
+      <input formControlName="lastname" type="text" matInput required />
+      <mat-error>{{ formErrors.lastname }}</mat-error>
+    </mat-form-field>
 
-    >
-    <h1>Create your account</h1>
+      <mat-form-field>
+        <mat-label>Téléphone</mat-label>
+        <mat-hint>({{ currentCode.code }})</mat-hint>
 
-    <button id="leave" mat-icon-button mat-dialog-close>&times;</button>
+        <input
+          formControlName="tel"
+          type="tel"
+          matInput
+          required
+          pattern="[0-9\s]*"
+        />
 
-      <div fxFill fxLayout="row" fxLayoutGap="10vw">
-        <div fxFlex fxLayoutGap="20px" id="column1" fxLayout="column">
-            <mat-form-field>
-                <input
-                  formControlName="id"
-                  type="text"
-                  placeholder="Pseudo name"
-                  matInput
-                  required
-                />
-                <mat-error>{{formErrors.id}}</mat-error>
-              </mat-form-field>
-          <mat-form-field>
-            <input
-              formControlName="firstname"
-              type="text"
-              placeholder="Firstname"
-              matInput
-              required
-            />
-            <mat-error>{{formErrors.firstname}}</mat-error>
-          </mat-form-field>
+        <mat-error *ngIf="formErrors.tel">{{ formErrors.tel }}</mat-error>
+        <button type="button" matSuffix mat-raised-button [matMenuTriggerFor]="menu">
+          {{ currentCode.lang }}
+        </button>
+      </mat-form-field>
 
-          <mat-form-field>
-            <input
-              formControlName="lastname"
-              type="text"
-              placeholder="Lastname"
-              matInput
-              required
-            />
-            <mat-error>{{formErrors.lastname}}</mat-error>
-          </mat-form-field>
-          <div fxFlex  fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="30px">
-            <label fxFlex="5" id="label" style="width: fit-content;">{{currentCode.code}}</label>
+      <mat-menu id="langList" #menu>
+        <button
+          mat-menu-item
+          *ngFor="let code of codes"
+          (click)="setLang(code)"
+        >
+          {{ code.lang }}
+          {{ code.code }}
+        </button>
+      </mat-menu>
+    </div>
 
-            <mat-form-field  fxFlex="100" fxLayout="row"  >
+      <div id="column2">
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input formControlName="email" type="email" matInput />
+      <mat-error>{{ formErrors.email }}</mat-error>
+    </mat-form-field>
 
-            <input
-              formControlName="tel"
-              type="tel"
-              placeholder="Telephone number"
-              matInput
-              required
-              pattern="[0-9\s]*"
+    <mat-form-field>
+      <mat-label>Pays</mat-label>
+      <input formControlName="country" type="text" matInput />
+      <mat-error>{{ formErrors.country }}</mat-error>
+    </mat-form-field>
 
-            />
-
-            <mat-error  *ngIf="formErrors.tel" >{{formErrors.tel}}</mat-error>
-          </mat-form-field>
-          <button style="border: none;background-color: rgb(94, 94, 94);" type="button" mat-button  [matMenuTriggerFor]="menu">{{currentCode.lang}} </button>
-  <mat-menu id="langList"  yPosition="above" xPosition="after" fxLayoutAlign="space-evenly space-evenly"  #menu >
-
-  <button  fxFlex fxFill mat-menu-item *ngFor="let code of codes" (click)="setLang(code)">
-  {{code.lang}}
-  {{code.code}}
-
-  </button>
-  </mat-menu>
-
-        </div>
-          <mat-form-field>
-            <input
-              formControlName="email"
-              type="email"
-              placeholder="Email"
-              matInput
-            />
-            <mat-error>{{formErrors.email}}</mat-error>
-          </mat-form-field>
-        </div>
-
-
-        <div fxFill fxFlex id="column2" fxLayoutGap="25px" fxLayout="column">
-
-            <mat-form-field>
-                <input
-                  formControlName="country"
-                  type="text"
-                  placeholder="Country"
-                  matInput
-                />
-                <mat-error>{{formErrors.country}}</mat-error>
-              </mat-form-field>
-          <mat-form-field>
-            <input
-            formControlName="password"
-              id="password"
-              placeholder="Password"
-              type="{{ type }}"
-              matInput
-              fxLayout="row"
-              required
-            />
-            <mat-icon id="icon" (click)="showHidePassword()" matSuffix>remove_red_eye</mat-icon
-            >
-            <mat-error>{{formErrors.password}}</mat-error>
-          </mat-form-field>
-          <span style="color:green" *ngIf="sucessMsg" id="sucess-Msg">{{sucessMsg}}</span>
-
-        </div>
-
-      </div>
-      <button
-      fxFlex="25"
-        [ngStyle]="{fontSize:'110%',
-          opacity: isValid ? '1' : '0.8',
-          pointerEvents: isValid  ? 'initial' : 'none'
-        }"
-        [disabled]="!isValid "
-        type="submit"
-        mat-raised-button
+    <mat-form-field>
+      <mat-label>Mot de passe</mat-label>
+      <input
+        formControlName="password"
+        id="password"
+        type="{{ type }}"
+        matInput
+        required
+        #psw
+      />
+      <mat-icon id="icon" (click)="showHidePassword()" matSuffix
+        >remove_red_eye</mat-icon
       >
-        Subscribe
-      </button>
+      <mat-error>{{ formErrors.password }}</mat-error>
+    </mat-form-field>
+  </div>
+</div>
+    <span style="color: green" *ngIf="sucessMsg" id="sucess-Msg">{{
+      sucessMsg
+    }}</span>
+<button
+[ngStyle]="{
+  fontSize: '110%',
+  opacity: isValid ? '1' : '0.8',
+  pointerEvents: isValid ? 'initial' : 'none'
+}"
+[disabled]="!isValid"
+type="submit"
+mat-raised-button
+>
+Subscribe
+</button>
 
-    </form>
-
-
+</form>

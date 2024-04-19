@@ -7,10 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class VoletComponent implements OnInit {
   isSet = false;
-  initZip = 2;
+  initZip = 2; 
   isButSet = false;
   isLangMenuSet = false
-  isLeftMenuUp = true
+  isLeftMenuUp = false
 
 
   setLeftMenu() {

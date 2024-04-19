@@ -30,17 +30,18 @@
 
 <h1><b>Trouvex</b></h1>
       </div>
-        <mat-list-item fxFlex="12">
-            <a fxFlex="100" *ngIf="!isConnected" mat-raised-button mat-button   (click)="openLoginForm()">   Login</a>
 
-            <a fxFlex="100" *ngIf="isConnected" mat-raised-button mat-button   (click)="openLogoutDialog()">   Logout</a>
+        <mat-list-item >
+            <a  *ngIf="!isConnected" mat-raised-button mat-button   (click)="openLoginForm()">   Login</a>
+
+            <a  *ngIf="isConnected" mat-raised-button mat-button   (click)="openLogoutDialog()">   Logout</a>
         </mat-list-item>
-      <mat-list-item *ngIf="isConnected" fxFlex="12"> <a fxFlex mat-raised-button mat-button   routerLink="/user">   User space</a></mat-list-item>
+      <mat-list-item *ngIf="isConnected"> <a fxFlex mat-raised-button mat-button   routerLink="/user">   User space</a></mat-list-item>
 
-<mat-list-item *ngIf="isConnected && isAdmin" fxFlex="12"><a fxFlex mat-raised-button  mat-button routerLink="/admin">   Admin space</a></mat-list-item>
+<mat-list-item *ngIf="isConnected && isAdmin"><a fxFlex mat-raised-button  mat-button routerLink="/admin">   Admin space</a></mat-list-item>
 
-<mat-list-item *ngIf="!isConnected " fxFlex="12">
-    <a fxFlex="100" mat-raised-button mat-button   (click)="openRegisterForm()">   Register</a>
+<mat-list-item *ngIf="!isConnected ">
+    <a mat-raised-button mat-button   (click)="openRegisterForm()">   Register</a>
 </mat-list-item>
 
     </mat-list>

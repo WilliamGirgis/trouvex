@@ -23,9 +23,10 @@ mat-list {
   display: flex;
   align-items: center;
   justify-content: space-around;
-
+height: max-content;
   mat-list-item {
     align-self: flex-start;
+    height: 75px;
   }
 }
 }

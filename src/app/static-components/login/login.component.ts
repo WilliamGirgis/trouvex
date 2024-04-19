@@ -1,7 +1,6 @@
 import {  HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef} from '@angular/material/legacy-dialog';
-import {BaseURL} from 'src/app/shared/basedurl'
+import { MatDialog,  MatDialogRef} from '@angular/material/dialog';
 import { HttpService } from 'src/app/services/http.service';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/AuthService.service';

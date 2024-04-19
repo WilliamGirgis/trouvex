@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from './static-components/login/login.component';
 import { AuthService } from 'src/app/services/AuthService.service';
@@ -46,6 +46,7 @@ export class AppComponent {
   isAdmin:boolean
   constructor( public dialog:MatDialog,private authService:AuthService) {
 this.isConnected = authService.isConnected
+// this.openRegisterForm()
   }
   openLogoutDialog() {
     this.dialog.open(LogoutDialogComponent, {width:'30vw',minWidth:'max-content',height:'max-content'}).afterClosed().subscribe((data) =>{
@@ -57,7 +58,7 @@ this.isConnected = authService.isConnected
   }
 
   openRegisterForm() {
-    this.dialog.open(RegisterComponent, {width:"70vw",height:"fit-content"})
+    this.dialog.open(RegisterComponent, {width:"70vw",height:"80vh",minHeight:'max-content'})
   }
   prepareRoute(outlet: RouterOutlet) {
 

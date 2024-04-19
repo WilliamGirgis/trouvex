@@ -17,3 +17,7 @@ background-color: #72aeff;
   }
 
 
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: white !important;
+}
+
