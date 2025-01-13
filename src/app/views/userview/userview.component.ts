@@ -5,9 +5,10 @@ import { QrCodeDialogComponent } from 'src/app/static-components/dialogs/qr-code
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-userview',
-  templateUrl: './userview.component.html',
-  styleUrls: ['./userview.component.scss']
+    selector: 'app-userview',
+    templateUrl: './userview.component.html',
+    styleUrls: ['./userview.component.scss'],
+    standalone: false
 })
 export class UserviewComponent implements OnInit {
 

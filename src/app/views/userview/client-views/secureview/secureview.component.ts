@@ -6,9 +6,10 @@ import {BaseURL} from '../../../../shared/basedurl'
 import { Possesions } from 'src/app/shared/possesions';
 
 @Component({
-  selector: 'app-secureView',
-  templateUrl: './secureView.component.html',
-  styleUrls: ['./secureView.component.scss']
+    selector: 'app-secureView',
+    templateUrl: './secureView.component.html',
+    styleUrls: ['./secureView.component.scss'],
+    standalone: false
 })
 export class SecureViewComponent implements OnInit {
   url2 = BaseURL + "/object/object"

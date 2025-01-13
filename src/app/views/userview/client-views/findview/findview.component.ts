@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-findview',
-  templateUrl: './findview.component.html',
-  styleUrls: ['./findview.component.scss']
+    selector: 'app-findview',
+    templateUrl: './findview.component.html',
+    styleUrls: ['./findview.component.scss'],
+    standalone: false
 })
 export class FindviewComponent implements OnInit {
   formBuilder:FormBuilder = new FormBuilder()

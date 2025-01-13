@@ -3,9 +3,10 @@ import { MapComponent,Marker, MarkerCard } from 'ng-leaflet-universal';
 
 
 @Component({
-  selector: 'app-client-map',
-  templateUrl: './client-map.component.html',
-  styleUrls: ['./client-map.component.scss']
+    selector: 'app-client-map',
+    templateUrl: './client-map.component.html',
+    styleUrls: ['./client-map.component.scss'],
+    standalone: false
 })
 export class ClientMapComponent implements OnInit,AfterViewInit {
 
