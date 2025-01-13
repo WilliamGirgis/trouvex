@@ -7,4 +7,13 @@ export class Possesions {
         image:string | Blob
         marque?:string
         model?:string
+        looses?:Loose [] = []
+}
+interface Loose {
+  lostDate:number
+  lostTimeRange?:number
+  foundDate:number
+  foundBy_UserId?:string
+  lostAreaInformation?:string []
+
 }

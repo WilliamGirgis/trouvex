@@ -1,60 +1,54 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { RouterOutlet } from '@angular/router';
-import { LoginComponent } from './static-components/login/login.component';
-import { AuthService } from 'src/app/services/AuthService.service';
-import { RegisterComponent } from './static-components/register/register.component';
-import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { LoginComponent } from './static-components/dialogs/login/login.component';
+import { AuthService } from '../app/services/AuthService.service';
+import { RegisterComponent } from './static-components/dialogs/register/register.component';
+import { LogoutDialogComponent } from './static-components/dialogs/logout-dialog/logout-dialog.component';
+import { WelcomeDialogComponent } from './static-components/dialogs/welcome-dialog/welcome-dialog.component';
 
-export const rightSlide =
-  trigger('routeAnimations', [
-    state('main', style({
-      height: '100vh',
-      opacity: 0.8,
-      backgroundColor: 'blue',
 
-    })),
-    state('box', style({
-      height: '100vh',
-      opacity: 0.8,
-      backgroundColor: 'yellow',
-
-    })),
-
-    transition('main <=> box', [
-
-      animate(500)
-  ]),
-
-  ]);
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations:[rightSlide],
-
-
 })
 
 
-export class AppComponent {
-
+export class AppComponent implements AfterViewInit {
+  selectedLang:string = 'FR'
+  isVoletUp:boolean = true
+  closeVoletOutput() {
+this.isVoletUp = !this.isVoletUp
+  }
+langs:string[] = ['EN','FR','DE','LU','TR','RU']
+menuLangSet:boolean = false
+mapSet:boolean = false
   isConnected:Boolean
-  isAdmin:boolean
-  constructor( public dialog:MatDialog,private authService:AuthService) {
+  isAdmin:boolean | undefined
+  constructor( public dialog:MatDialog,private authService:AuthService,private router:Router) {
 this.isConnected = authService.isConnected
-// this.openRegisterForm()
+
+  }
+  ngAfterViewInit(): void {
+    console.log(this.router)
+  }
+
+  openWelcomeDialog(id:string) {
+    this.dialog.open(WelcomeDialogComponent, {minWidth:"max-content",height:'max-content',data:{userpseudo:id},exitAnimationDuration:500,enterAnimationDuration:800})
   }
   openLogoutDialog() {
-    this.dialog.open(LogoutDialogComponent, {width:'30vw',minWidth:'max-content',height:'max-content'}).afterClosed().subscribe((data) =>{
+    this.dialog.open(LogoutDialogComponent, {width:'33vw',minWidth:'max-content',height:'max-content'}).afterClosed().subscribe((data) =>{
       data ? this.logout() : null
     })
   }
   openLoginForm() {
-    this.dialog.open(LoginComponent, {width:'50vw',height:'max-content'})
+    this.dialog.open(LoginComponent, {width:'50vw',height:'max-content'}).afterClosed().subscribe((data) =>{
+      console.log(data)
+      data ? this.openWelcomeDialog(data) : null
+    })
   }
 
   openRegisterForm() {
@@ -62,7 +56,7 @@ this.isConnected = authService.isConnected
   }
   prepareRoute(outlet: RouterOutlet) {
 
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 
   logout() {

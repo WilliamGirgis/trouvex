@@ -1,12 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@200&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Flex:wght@200&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@200&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Flex:wght@200&display=swap');
 
 
 * {
     box-sizing: border-box;
 }
+
+:root{
+  --menuHeight:12vh;
+  --outletHeight:88vh;
+  --lightBlueTheme:#7daff0;
+  --darkBlueTheme:#0c3370;
+  }
 
 
 body {
@@ -16,6 +23,11 @@ background-color: #72aeff;
     font-family: 'Roboto Flex', sans-serif;
   }
 
+
+  .map-container {
+    width: 100% !important;
+    height: 100% !important;
+  }
 
   .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background-color: white !important;

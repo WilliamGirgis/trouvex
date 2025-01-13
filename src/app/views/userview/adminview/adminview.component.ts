@@ -1,6 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -52,7 +52,7 @@ export class AdminviewComponent implements OnInit {
   displayedColumns:String[]
   dataSource = new MatTableDataSource(this.userList)
 
-  constructor(private formBuilder:UntypedFormBuilder,private http:HttpClient,private route: ActivatedRoute,private router:Router) {
+  constructor(private http:HttpClient,private route: ActivatedRoute,private router:Router) {
     this.uploader.onCompleteAll = () => {
       // When the upload queue is completely done, we refresh the page to output it correctly
       console.log("All Uploaded to : " + this.uploader.options.url)
@@ -70,6 +70,8 @@ export class AdminviewComponent implements OnInit {
 
 
   }
+
+  private formBuilder:FormBuilder = new FormBuilder()
   columnsToDisplay = ['ID', 'firstname', 'lastname', 'tel','email','country','Search'];
   saveUserForm:UntypedFormGroup = this.formBuilder.group({
 

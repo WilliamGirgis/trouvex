@@ -1,31 +1,85 @@
 <div id="wrapper" >
 
-  <mat-card *ngFor="let object of objects;i as index">
+  <div class="wrp-card" >
+    <div id="menu">
+ <mat-card  (click)="menuOn = !menuOn">Ajouter
+  <img src="../../../assets/images/plus-square-fill (1).svg">
+
+ </mat-card>
+<div [style.height]="menuOn ? '33vh': '0'"   class="add-wrp">
+  <form [formGroup]="formGroup">
+    <mat-form-field >
+      <mat-label>Commander un support ?</mat-label>
+      <input [formControl]="supportControl" matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <input  [formControl]="typeControl" matInput>
+    </mat-form-field>
+    <mat-form-field >
+      <mat-label>Photo</mat-label>
+      <input [formControl]="photoControl" matInput>
+    </mat-form-field>
+  </form>
+
+</div>
+</div>
+<mat-card [style.height]="selectedIndexDetails == i ? 'calc(202px + 121px)' : '209px'" *ngFor="let object of objects;index as i" id="sub{{i}}" class="sub-wrap">
 
 
-<mat-card id="input-wrp">
+<div id="input-wrp">
 <img [src]="object.image">
-</mat-card>
+
+</div>
 
 
-<ol >
+<ol class="list">
 
   <li *ngIf="object.name">
   Objet : <em>{{object.name}}</em>
   </li>
-  <li *ngIf="object.marque">
-   Marque : <em>{{object.marque}}</em>
-  </li>
-  <li *ngIf="object.model">
-   Model <em>{{object.model}}</em>
-  </li>
-  <li>
+  <li id="qr-code">
    Code de l'objet : <em>{{object.code}}</em>
+   <button [style.boxShadow]="object.lost  ? '0px 1px 3px red' : '0px 1px 3px green'" (click)="openQRCodeDialog('../../../assets/images/qr-code.svg')" mat-icon-button>
+    <svg xmlns="http://www.w3.org/2000/svg"
+    [style]="{
+      fill:
+        object.lost  ? 'red' : 'green'
+    }"
+
+    class="bi bi-qr-code" viewBox="0 0 16 16">
+      <path d="M2 2h2v2H2z"/>
+      <path d="M6 0v6H0V0zM5 1H1v4h4zM4 12H2v2h2z"/>
+      <path d="M6 10v6H0v-6zm-5 1v4h4v-4zm11-9h2v2h-2z"/>
+      <path d="M10 0v6h6V0zm5 1v4h-4V1zM8 1V0h1v2H8v2H7V1zm0 5V4h1v2zM6 8V7h1V6h1v2h1V7h5v1h-4v1H7V8zm0 0v1H2V8H1v1H0V7h3v1zm10 1h-1V7h1zm-1 0h-1v2h2v-1h-1zm-4 0h2v1h-1v1h-1zm2 3v-1h-1v1h-1v1H9v1h3v-2zm0 0h3v1h-2v1h-1zm-4-1v1h1v-2H7v1z"/>
+      <path d="M7 12h1v3h4v1H7zm9 2v2h-3v-1h2v-1z"/>
+    </svg>
+  </button>
   </li>
   <li [style.color]="object.lost ? 'red' : 'green'">
-    {{object.lost ? "L'objet est signalé perdu" : "L'objet n'est pas signaler perdu"}}
+    {{object.lost ? ("L'objet est signalé perdu depuis le") : "L'objet n'est pas signaler perdu"}}
+    <span *ngIf="object.lost">{{object.looses[object.looses.length - 1].lostDate | date}}</span>
    </li>
-</ol>
 
+   <li class="details-li">
+<button (click)="object.lost  = !object.lost" mat-raised-button>{{object.lost ? "Déclarer l'objet retrouvé" : "Déclarer l'objet perdu"}}</button>
+  </li>
+  <li class="details-li">
+    <button mat-flat-button (click)="displayDetails(i)" class="details">Afficher les détails<img src="../../../assets/images/chevron-double-down.svg"></button>
+      </li>
+</ol>
+<ol  class="hidden-list">
+
+  <li *ngIf="selectedIndexDetails == i" [style.animationDelay]="'200ms'">
+Aux alentours de Strasbourg centre (France)  </li>
+  <li *ngIf="selectedIndexDetails == i" [style.animationDelay]="'300ms'">
+    Perdu dans l'aprés-midi
+  </li>
+  <li *ngIf="selectedIndexDetails == i" [style.animationDelay]="'400ms'">
+    Dernier scanne le 25/02/2013 à 9H32
+  </li>
+</ol>
 </mat-card>
+</div>
 </div>

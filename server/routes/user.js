@@ -10,7 +10,7 @@ const fs = require("fs");
 const path = require("path");
 
 const User = require("./user.model");
-const { stringify } = require("@angular/compiler/src/util");
+
 
 /* MIDLLEWARE */
 const verify = (req, res, next) => {
@@ -22,7 +22,7 @@ const verify = (req, res, next) => {
         return Promise.reject({
           error: "USER NOT FOUND with :" + refreshToken + " \n " + _id,
         });
-      } 
+      }
 
       // If this code is reach, the user was found therefor the session is valid
 
@@ -57,7 +57,7 @@ let authenticate = (req,res,next) => {  /* MIDDLEWARE for checking if the access
   let token = req.header('x-access-token') // We intercept each request, taking the access-Token of the current user logged in
   jwt.verify(token,User.getJWTSecret(),(err,decoded)=>{// We decrypt the token, and if it the token is empty or not valid, the user get disconnected
    if(err) {
-     // Do not Authenticate 
+     // Do not Authenticate
      res.status(401).send(err)
    } else {
      req.user_id = decoded._id
@@ -73,8 +73,11 @@ router.post("/users/login", (req, res) => {
   let password = req.body.password;
   User.findByCredentials(id, password).then((user) => {
     if(!user || user === undefined) {
-      return res.send().status(400);
+      return res.status(404).send("noUser")
     }
+    // if(user.isSpectral) {
+    //   return res.status(404).send("accountNotActivated");
+    // }
     return user
       .createSessions()
       .then((refreshToken) => {
@@ -169,11 +172,11 @@ router.post("/users", (req, res) => {
     })
     .then((authToken) => {
 
-      fs.mkdir(path.join(folder, stringify(newUser._id)), (err) => {
-        if (err) {
-          return console.error(err);
-        }
-      });
+      // fs.mkdir(path.join(folder, stringify(newUser._id)), (err) => {
+      //   if (err) {
+      //     return console.error(err);
+      //   }
+      // });
       res
         .header("x-refresh-token", authToken.refreshToken)
         .header("x-access-token", authToken.accessToken)

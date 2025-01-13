@@ -1,0 +1,27 @@
+
+<div id="wrp" >
+  <h1>Connection</h1>
+
+        <button id="leave" mat-icon-button mat-dialog-close>&times;</button>
+
+<form (submit)="loginUser(id.value,psw.value)">
+
+
+    <mat-form-field>
+        <input placeholder="ID" #id type="text" matInput>
+    </mat-form-field>
+    <mat-form-field>
+        <input placeholder="Password" #psw type="password" matInput>
+    </mat-form-field>
+    <button id="co" type="submit" mat-raised-button>Connection</button>
+
+
+<span style="font-size: 75%;color: red; text-align: center;margin: 7px;">&nbsp;{{msg}}</span>
+  </form>
+
+<p>
+  Vous n'êtes pas encore inscrit ?
+<span (click)="openRegisterForm()">Inscrivez-vous</span>
+</p>
+
+</div>

@@ -1,64 +1,88 @@
 
 
-<div id="volet" [ngStyle]="{ left: isLeftMenuUp ? '0' : '-30vw',boxShadow: isLeftMenuUp ? '20px 0px 13px -10px  rgba(0,0,0,0.6)' : 'none' }">
+<div id="volet" [ngStyle]="{ right: isVoletUp ? '0' : '-21vw',boxShadow: isVoletUp ? '20px 0px 13px -10px  rgba(0,0,0,0.6)' : 'none' }">
 
   <div id="wrapper">
 
-<div id="titles">
-  <h1>Espace personnel</h1>
-</div>
 
 
-  <div
-    id="circle"
-    (click)="setLeftMenu()"
-    [ngStyle]="{ right: isLeftMenuUp ? '-30px ' : '' }"
-  >
-<img       [ngStyle]="{
-  transform: isLeftMenuUp ? 'rotate(180deg)' : 'rotate(0deg)'
-}"
-id="barArrow" src="../../../assets/images/arrow.svg">
-  </div>
 <div id="list">
   <li>
-    <button
+    <button [routerLinkActive]="'activated'" routerLink="secure"
+    (click)="closeVoletOutput.emit()"
     >Enregistrer un objets
-    <img  src="../../../assets/images/arrow.svg">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sticky-fill" viewBox="0 0 16 16">
+      <path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 15 8.586V2.5A1.5 1.5 0 0 0 13.5 1zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177z"/>
+    </svg>
 
     </button>
   </li>
   <li>
-       <button routerLink="user" >
+       <button [routerLinkActive]="'activated'" (click)="closeVoletOutput.emit()" routerLink="user" >
         Liste de possesions
-        <img src="../../../assets/images/arrow.svg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+          <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
+        </svg>
 
        </button>
 
   </li>
   <li>
-       <button routerLink="lost" >
+       <button [routerLinkActive]="'activated'" (click)="closeVoletOutput.emit()" routerLink="lost" >
         Signaler une perte
-        <img src="../../../assets/images/arrow.svg">
+
+        <svg fill="currentColor" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+           viewBox="0 0 300.46 300.46" xml:space="preserve">
+        <g id="XMLID_1326_">
+          <g>
+            <g>
+
+              <circle cx="226.252" cy="40.42" r="23.08"/>
+              <path d="M256.05,73.565c-9.647,0-41.975,0-51.469,0l-24.386-2.851l13.127-15.771c3.934-4.727,3.292-11.749-1.435-15.684
+                c-4.728-3.934-11.749-3.291-15.683,1.435L149.93,72.264c-2.614,3.141-3.298,7.461-1.782,11.256
+                c1.516,3.794,4.989,6.453,9.047,6.929l39.291,4.594l0.005,192.054c0,7.381,5.983,13.363,13.363,13.363
+                s13.363-5.982,13.363-13.363V180.284h5.77v106.813c0,7.381,5.983,13.363,13.363,13.363s13.363-5.982,13.363-13.363
+                l-0.237-187.114c-0.001-1.271,1.016-2.308,2.286-2.331c1.271-0.023,2.326,0.975,2.37,2.245v0.001l0.411,81.812
+                c0.031,6.131,5.01,11.08,11.135,11.08c0.018,0,0.038-0.001,0.057-0.001c6.15-0.031,11.11-5.042,11.08-11.192l-0.411-81.812
+                C282.33,85.327,270.508,73.565,256.05,73.565z"/>
+              <rect x="274.453" y="34.401" width="9.608" height="10.165"/>
+              <path d="M283.502,0c-5.687,0-10.767,2.717-13.016,7.995l7.5,5.331c0.855-0.995,2.018-3.843,5.083-3.843
+                c1.868,0,3.719,1.091,3.719,3.099c0,3.496-5.852,5.85-7.624,6.818c-4.459,2.316-4.897,5.458-4.897,9.112h9.608
+                c0-1.408,1.28-2.327,2.758-3.161c4.231-2.387,10.382-4.021,10.382-12.706C297.014,4.314,290.919,0,283.502,0z"/>
+            </g>
+          </g>
+        </g>
+        </svg>
+
 
        </button>
   </li>
   <li>
-    <button routerLink="found" >
+    <button [routerLinkActive]="'activated'"    (click)="closeVoletOutput.emit()"
+    routerLink="find" >
       Signaler une trouvaille
-      <img src="../../../assets/images/arrow.svg">
+      <svg fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+         width="800px" height="800px" viewBox="0 0 47 47" xml:space="preserve">
+      <g>
+        <g>
+          <path d="M45.652,39.145L34.429,27.926c4.2-7.099,3.27-16.417-2.819-22.513C24.383-1.804,12.633-1.804,5.415,5.415
+            c-7.22,7.22-7.22,18.972,0,26.181c6.097,6.104,15.413,7.031,22.506,2.833l11.223,11.223c1.802,1.798,4.713,1.796,6.512,0.002
+            C47.447,43.861,47.45,40.944,45.652,39.145z M27.814,27.819c-5.124,5.137-13.474,5.131-18.608-0.007
+            C4.065,22.684,4.068,14.337,9.204,9.2c5.134-5.127,13.483-5.13,18.618,0.005C32.955,14.344,32.957,22.681,27.814,27.819z"/>
+          <path d="M25.062,14.049c-1.662,0-3.005,1.523-3.302,3.6c-0.021-0.004-0.04-0.015-0.062-0.015H9.478
+            c-0.485,0-0.878,0.393-0.878,0.879c0,0.484,0.393,0.878,0.878,0.878h0.948v2.341c0,0.484,0.394,0.876,0.878,0.876
+            s0.879-0.392,0.879-0.876v-2.341h0.513v1.388c0,0.487,0.393,0.878,0.878,0.878c0.486,0,0.876-0.391,0.876-0.878v-1.388h7.247
+            c0.023,0,0.042-0.012,0.062-0.013c0.297,2.073,1.64,3.595,3.302,3.595c1.886,0,3.363-1.959,3.363-4.46
+            C28.425,16.008,26.947,14.049,25.062,14.049z M25.062,21.219c-0.763,0-1.609-1.112-1.609-2.706c0-1.597,0.847-2.707,1.609-2.707
+            c0.761,0,1.607,1.11,1.607,2.707C26.669,20.106,25.822,21.219,25.062,21.219z"/>
+        </g>
+      </g>
+      </svg>
 
 </button>
 
   </li>
-  <li>
-       <button routerLink="map" >
-        Carte des objets trouvé
-<img src="../../../assets/images/globe-americas.svg">
-       </button>
-  </li>
+
 </div>
-
-
-<button style="background-color:inherit" mat-raised-button>Langue</button>
 </div>
 </div>
