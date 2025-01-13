@@ -22,7 +22,7 @@ import {HomeviewComponent } from './views/userview/client-views/homeview/homevie
 import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import {HttpService} from 'src/app/services/http.service';
 import { LoginComponent } from './static-components/dialogs/login/login.component'
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import {WebReqInterceptorService} from 'src/app/services/webReqinterceptor.service'
 import { AdminviewComponent } from './views/userview/adminview/adminview.component';
 import { AdminGuard } from 'src/app/guards/admin-guard';
@@ -65,54 +65,45 @@ const routes: Routes = [
   },
 ];
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    VoletComponent,
-    MenubarComponent,
-    FindviewComponent,
-    HomeviewComponent,
-      AdminviewComponent,
-      UserviewComponent,
-      LoginComponent,
-      RegisterComponent,
-      SecureViewComponent,
-      ContactViewComponent,
-      AboutViewComponent,
-      LogoutDialogComponent,
-      ClientMapComponent,
-      WelcomeDialogComponent,
-      QrCodeDialogComponent
-   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    RouterModule.forRoot(routes, {urlUpdateStrategy:'deferred'}),
-    CommonModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatMenuModule,
-    MatIconModule,
-    MatListModule,
-    MatDialogModule,
-    MatInputModule,
-    MatCardModule,
-    MatTableModule,
-    MatProgressSpinnerModule,
-    MatTooltipModule,
-    HttpClientModule,
-    NgLeafletUniversalModule ],
-  exports :[],
-  providers: [HttpService,{provide:HTTP_INTERCEPTORS,useClass:WebReqInterceptorService,multi:true},AdminGuard,AuthGuard, {
-    provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-    useValue: globalMatFormFieldOptions
-  }
-],
-  bootstrap: [AppComponent]
-
-
-})
+@NgModule({ declarations: [
+        AppComponent,
+        VoletComponent,
+        MenubarComponent,
+        FindviewComponent,
+        HomeviewComponent,
+        AdminviewComponent,
+        UserviewComponent,
+        LoginComponent,
+        RegisterComponent,
+        SecureViewComponent,
+        ContactViewComponent,
+        AboutViewComponent,
+        LogoutDialogComponent,
+        ClientMapComponent,
+        WelcomeDialogComponent,
+        QrCodeDialogComponent
+    ],
+    exports: [],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        BrowserAnimationsModule,
+        RouterModule.forRoot(routes, { urlUpdateStrategy: 'deferred' }),
+        CommonModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatMenuModule,
+        MatIconModule,
+        MatListModule,
+        MatDialogModule,
+        MatInputModule,
+        MatCardModule,
+        MatTableModule,
+        MatProgressSpinnerModule,
+        MatTooltipModule,
+        NgLeafletUniversalModule], providers: [HttpService, { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptorService, multi: true }, AdminGuard, AuthGuard, {
+            provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+            useValue: globalMatFormFieldOptions
+        }, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}
 

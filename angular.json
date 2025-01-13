@@ -16,11 +16,12 @@
       "architect": {
         "build": {
 
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/portfolio",
+            "outputPath": {
+              "base": "dist/portfolio"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -38,7 +39,8 @@
 
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
@@ -58,9 +60,7 @@
             },
             "development": {
               "aot": false,
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": false,
               "extractLicenses": false,
               "sourceMap": false,
               "namedChunks": true
