@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-volet',
-  templateUrl: './volet.component.html',
-  styleUrls: ['./volet.component.scss'],
+    selector: 'app-volet',
+    templateUrl: './volet.component.html',
+    styleUrls: ['./volet.component.scss'],
+    standalone: false
 })
 export class VoletComponent implements OnInit {
   isSet = false;

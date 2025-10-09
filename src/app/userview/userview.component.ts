@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Possesions } from '../shared/possesions';
 
 @Component({
-  selector: 'app-userview',
-  templateUrl: './userview.component.html',
-  styleUrls: ['./userview.component.scss']
+    selector: 'app-userview',
+    templateUrl: './userview.component.html',
+    styleUrls: ['./userview.component.scss'],
+    standalone: false
 })
 export class UserviewComponent implements OnInit {
 

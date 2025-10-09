@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/AuthService.service';
 @Component({
-  selector: 'app-menubar',
-  templateUrl: './menubar.component.html',
-  styleUrls: ['./menubar.component.scss']
+    selector: 'app-menubar',
+    templateUrl: './menubar.component.html',
+    styleUrls: ['./menubar.component.scss'],
+    standalone: false
 })
 export class MenubarComponent implements OnInit {
   isLangMenuSet = false

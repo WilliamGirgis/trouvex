@@ -1,4 +1,4 @@
-import {  HttpResponse } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {BaseURL} from 'src/app/shared/basedurl'
@@ -7,9 +7,10 @@ import { catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/AuthService.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    standalone: false
 })
 export class LoginComponent implements OnInit {
 

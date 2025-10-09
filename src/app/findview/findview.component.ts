@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-findview',
-  templateUrl: './findview.component.html',
-  styleUrls: ['./findview.component.scss']
+    selector: 'app-findview',
+    templateUrl: './findview.component.html',
+    styleUrls: ['./findview.component.scss'],
+    standalone: false
 })
 export class FindviewComponent implements OnInit {
 
-  constructor(private formBuilder:FormBuilder) {
+  constructor(private formBuilder:UntypedFormBuilder) {
 
     this.sendCodeForm.valueChanges.subscribe((data) => {
       this.isValid = this.sendCodeForm.valid
@@ -18,7 +19,7 @@ export class FindviewComponent implements OnInit {
 
 
 
-    sendCodeForm:FormGroup = this.formBuilder.group({
+    sendCodeForm:UntypedFormGroup = this.formBuilder.group({
 
     code: [,[Validators.required,Validators.maxLength(5),Validators.minLength(5)]]
  

@@ -1,13 +1,14 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import {BaseURL} from '../shared/basedurl'
 
 @Component({
-  selector: 'app-secureView',
-  templateUrl: './secureView.component.html',
-  styleUrls: ['./secureView.component.scss']
+    selector: 'app-secureView',
+    templateUrl: './secureView.component.html',
+    styleUrls: ['./secureView.component.scss'],
+    standalone: false
 })
 export class SecureViewComponent implements OnInit {
   url2 = BaseURL + "/object/object"

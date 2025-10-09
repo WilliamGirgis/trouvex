@@ -25,7 +25,7 @@ import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatDialog, MatDialogModule} from '@angular/material/dialog'
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import {WebReqInterceptorService} from 'src/app/services/webReqinterceptor.service'
 import { AdminviewComponent } from './adminview/adminview.component';
 import { AdminGuard } from 'src/app/guards/admin-guard';
@@ -35,7 +35,7 @@ import {MatTableModule} from '@angular/material/table'
 import { FileUploadModule } from 'ng2-file-upload';
 import { MatRadioModule } from '@angular/material/radio';
 import { RegisterComponent } from './static-components/register/register.component';
-import { SecureViewComponent } from './secureView/secureView.component';
+// import { SecureViewComponent } from './secureView/secureView.component';
 import { ContactViewComponent } from './contactView/contactView.component';
 import { AboutViewComponent } from './aboutView/aboutView.component';
 
@@ -47,58 +47,49 @@ const routes: Routes = [
   },
   {path:'find',component:FindviewComponent},
   {path:'home',component:HomeviewComponent},  
-  {path:'secure',component:SecureViewComponent,canActivate:[AuthGuard]},
+  // {path:'secure',component:SecureViewComponent,canActivate:[AuthGuard]},
   {path:'about',component:AboutViewComponent},
   {path:'contact',component:ContactViewComponent},
   {path:'admin',component:AdminviewComponent,canActivate:[AdminGuard]},
   {path:'user',component:UserviewComponent,canActivate:[AuthGuard]}
 ];
 
-@NgModule({
-  declarations: [					
-    AppComponent,
-    VoletComponent,
-    MenubarComponent,
-    FindviewComponent,
-    HomeviewComponent,
-      AdminviewComponent,
-      UserviewComponent,
-      LoginComponent,
-      RegisterComponent,
-      SecureViewComponent,
-      ContactViewComponent,
-      AboutViewComponent
-   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
-    CommonModule,
-    MatButtonModule,
-    MatInputModule,
-    MatButtonToggleModule,
-    FlexLayoutModule,
-    FlexModule,
-    MatCardModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatListModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatProgressSpinnerModule,
-    HttpClientModule,
-    MatTableModule,
-    MatRadioModule,
-    FileUploadModule
-  ],
-  exports :[],
-  providers: [HttpService,{provide:HTTP_INTERCEPTORS,useClass:WebReqInterceptorService,multi:true},AdminGuard,AuthGuard],
-  bootstrap: [AppComponent]
-
-
-})
+@NgModule({ declarations: [
+        AppComponent,
+        VoletComponent,
+        MenubarComponent,
+        FindviewComponent,
+        HomeviewComponent,
+        AdminviewComponent,
+        UserviewComponent,
+        LoginComponent,
+        RegisterComponent,
+        // SecureViewComponent,
+        ContactViewComponent,
+        AboutViewComponent
+    ],
+    exports: [],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        RouterModule.forRoot(routes, {}),
+        CommonModule,
+        MatButtonModule,
+        MatInputModule,
+        MatButtonToggleModule,
+        FlexLayoutModule,
+        FlexModule,
+        MatCardModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatListModule,
+        MatMenuModule,
+        MatToolbarModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatProgressSpinnerModule,
+        MatTableModule,
+        MatRadioModule,
+        ], providers: [HttpService, { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptorService, multi: true }, AdminGuard, AuthGuard, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}

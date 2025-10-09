@@ -1,19 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  Router,
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root',
 })
-export class AdminGuard implements CanActivate {
+export class AdminGuard  {
   constructor(private router: Router, private http: HttpClient) {}
   temp: string;
   canActivate(

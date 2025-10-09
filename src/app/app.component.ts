@@ -1,4 +1,3 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RouterOutlet } from '@angular/router';
@@ -6,36 +5,14 @@ import { LoginComponent } from './static-components/login/login.component';
 import { AuthService } from 'src/app/services/AuthService.service';
 import { RegisterComponent } from './static-components/register/register.component';
 
-export const rightSlide =
-  trigger('routeAnimations', [
-    state('main', style({
-      height: '100vh',
-      opacity: 0.8,
-      backgroundColor: 'blue',
-
-    })), 
-    state('box', style({
-      height: '100vh',
-      opacity: 0.8,
-      backgroundColor: 'yellow',
-
-    })),
-
-    transition('main <=> box', [
-
-      animate(500)
-  ]),
-  
-  ]);
 
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  animations:[rightSlide],
-  
-  
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    animations: [],
+    standalone: false
 })
 
 
