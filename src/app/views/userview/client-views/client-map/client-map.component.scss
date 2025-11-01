@@ -5,6 +5,7 @@
   right: 0;
   bottom: 0;
   color: red;
+  z-index: 0;
 }
 
 .cards {
@@ -15,9 +16,14 @@
   border: 2px solid black;
   height: 100%;
 }
+#marker {
+border-radius: 50%;
+}
+
 
 #map {
   height: 100%;
+
 }
 
 

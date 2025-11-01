@@ -1,0 +1,85 @@
+
+<h1>Qu'avez vous perdu ? </h1>
+<div  id="wrapper">
+
+
+  <div id="dragNdroparea">
+
+    <div id="placeholder-wrp">
+      <input (click)="test($event)" multiple  ng2FileSelect
+      [uploader]="uploader"
+       type="file"  >
+    <span>Ajoutez une image :</span>
+
+    <img  id="placeholder"   src="../../../../assets/images/add-photo-camera-svgrepo-com.svg">
+
+
+       <div *ngIf="imageList.length > 0" id="imageList" >
+
+         @for (image of imageList; track $index) {
+           <img [matMenuTriggerFor]="menu" [src]="image">
+ <mat-menu   #menu >
+   <button (click)="imageList.splice($index,1);uploader.removeFromQueue(uploader.queue[$index])" type="button" mat-flat-button>Supprimez </button>
+
+ </mat-menu>
+
+         }
+
+       </div>
+
+      </div>
+
+      </div>
+
+
+
+
+  <form (submit)="saveItem()" novalidate [formGroup]="formGroup">
+
+
+    <div id="input-wrapper">
+      <mat-form-field id="description-input" appearance="outline">
+        <input   placeholder="Ajoutez une description" [formControlName]="'description'" matInput>
+     </mat-form-field>
+
+     <mat-form-field appearance="outline">
+      <input #citySearchBox type="text" id="citySearchBox" placeholder="Où ?" [formControlName]="'zone'" matInput>
+   </mat-form-field>
+
+
+   @if(no.checked) {
+    <div id="date-wrapper" >
+      <mat-form-field>
+        <mat-label>Sélectionnez une date</mat-label>
+        <input [formControlName]="'date'" matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Aux alentours de :</mat-label>
+        <input  type="time" [formControlName]="'hour'" matInput>
+      </mat-form-field>
+    </div>
+  }
+
+   <mat-radio-group id="radio-group" [formControlName]="'radio'">
+    <mat-label>Venez vous de perdre l'objet ?</mat-label>
+
+    <mat-radio-button #yes [value]="true"  type="radio" >Oui</mat-radio-button>
+    <mat-radio-button #no  [value]="false"  type="radio" >Non</mat-radio-button>
+  </mat-radio-group>
+    </div>
+
+
+
+
+
+      <div id="saveItem-wrp">
+        <button type="submit" mat-raised-button>Enregistrer le signalement</button>
+
+      </div>
+  </form>
+</div>
+

@@ -1,25 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { MatDialogRef } from '@angular/material/dialog';
+import { ClientMapComponent } from './client-map.component'; // Replace with your component
 
-import { ClientMapComponent } from './client-map.component';
-
-describe('ClientMapComponent', () => {
-  let component: ClientMapComponent;
-  let fixture: ComponentFixture<ClientMapComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ClientMapComponent ]
-    })
-    .compileComponents();
-  }));
-
+describe('MyDialogComponent', () => {
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClientMapComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      declarations: [],imports:[ClientMapComponent],
+      providers: [
+        { provide: MatDialogRef, useValue: {} }, // ✅ Provide MatDialogRef
+      ]
+    });
   });
 
   it('should create', () => {
+    const fixture = TestBed.createComponent(ClientMapComponent);
+    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 });

@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import {BaseURL} from '../../../shared/basedurl'
-import {User} from 'src/app/shared/user'
+import {User} from '../../../shared/user'
 import { trigger ,style,state,transition,animate} from '@angular/animations';
 import {  MatTableDataSource } from '@angular/material/table';
 import { FileUploader } from 'ng2-file-upload';
@@ -38,19 +38,19 @@ export class AdminviewComponent implements OnInit {
   uploader: FileUploader = new FileUploader({ url: uploadURL});
   readonly delUserURL = 'http://localhost:4200/user/users/del'
 
-  userListTest:User[] = [{id:'User1',firstname:'willy',lastname:'bg',tel:'0760650912',email:'btrnrt@gmail.com',possesions:null,country:'France'}]
+  userListTest:User[] = [{id:'User1',firstname:'willy',lastname:'bg',tel:'0760650912',email:'btrnrt@gmail.com',possesions:null!,country:'France'}]
   userList:User[] = [];
   noUser?:boolean = false
-  successMsgSaved: string;
-  isSuccess: boolean;
+  successMsgSaved?: string;
+  isSuccess?: boolean;
   selectedAction = 'add_object'
   readonly registerUserURL = 'http://localhost:4200/user/users';
   subscribeForm: any;
   isOverDeleteButton = false
 
-  global_ID:string
+  global_ID?:string
   isEmptyTable:Boolean = false
-  displayedColumns:String[]
+  displayedColumns?:String[]
   dataSource = new MatTableDataSource(this.userList)
 
   constructor(private http:HttpClient,private route: ActivatedRoute,private router:Router) {
@@ -127,10 +127,10 @@ export class AdminviewComponent implements OnInit {
 
 
     async addObject(id:string) {
-    let user_Id = this.saveObjectForm.get('user_id').value
-    let objectName = this.saveObjectForm.get('objectName').value
-    let isLost = this.saveObjectForm.get('isLost').value
-    let image =  this.saveObjectForm.get('image').value
+    let user_Id = this.saveObjectForm.get('user_id')!.value
+    let objectName = this.saveObjectForm.get('objectName')!.value
+    let isLost = this.saveObjectForm.get('isLost')!.value
+    let image =  this.saveObjectForm.get('image')!.value
    await this.getuser_ID(user_Id) // Set the global_ID
 
    let user_folder:string = "/image/upload" + "/" + this.global_ID

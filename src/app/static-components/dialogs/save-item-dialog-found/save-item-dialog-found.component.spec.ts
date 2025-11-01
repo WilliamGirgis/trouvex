@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
-import { LogoutDialogComponent } from './logout-dialog.component'; // Replace with your component
+import { SaveItemDialogComponent } from './save-item-dialog-found.component'; // Replace with your component
 
-describe('LogoutDialogComponent', () => {
+describe('SaveItemDialogComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LogoutDialogComponent],
+      imports: [SaveItemDialogComponent],
       providers: [
         { provide: MatDialogRef, useValue: {} }, // ✅ Provide MatDialogRef
       ]
@@ -13,7 +13,7 @@ describe('LogoutDialogComponent', () => {
   });
 
   it('should create', () => {
-    const fixture = TestBed.createComponent(LogoutDialogComponent);
+    const fixture = TestBed.createComponent(SaveItemDialogComponent);
     const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });

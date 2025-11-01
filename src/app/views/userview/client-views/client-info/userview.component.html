@@ -1,12 +1,17 @@
+
 <div id="wrapper" >
 
   <div class="wrp-card" >
-    <div id="menu">
- <mat-card  (click)="menuOn = !menuOn">Ajouter
-  <img src="../../../assets/images/plus-square-fill (1).svg">
+     <form id="circle">
+      <input type="file" (click)="test($event);" [uploader]="uploader" ng2FileSelect id="fileInput" >
 
- </mat-card>
-<div [style.height]="menuOn ? '33vh': '0'"   class="add-wrp">
+<svg  viewBox="0 0 16 16"  xmlns="http://www.w3.org/2000/svg">
+<path d="M8 7C9.65685 7 11 5.65685 11 4C11 2.34315 9.65685 1 8 1C6.34315 1 5 2.34315 5 4C5 5.65685 6.34315 7 8 7Z" fill="var(--darkBlueTheme)"/>
+<path d="M14 12C14 10.3431 12.6569 9 11 9H5C3.34315 9 2 10.3431 2 12V15H14V12Z" fill="var(--darkBlueTheme)"/>
+</svg>
+
+</form>
+<!-- <div [style.height]="menuOn ? '33vh': '0'"   class="add-wrp">
   <form [formGroup]="formGroup">
     <mat-form-field >
       <mat-label>Commander un support ?</mat-label>
@@ -24,7 +29,7 @@
   </form>
 
 </div>
-</div>
+
 <mat-card [style.height]="selectedIndexDetails == i ? 'calc(202px + 121px)' : '209px'" *ngFor="let object of objects;index as i" id="sub{{i}}" class="sub-wrap">
 
 
@@ -59,7 +64,7 @@
   </li>
   <li [style.color]="object.lost ? 'red' : 'green'">
     {{object.lost ? ("L'objet est signalé perdu depuis le") : "L'objet n'est pas signaler perdu"}}
-    <span *ngIf="object.lost">{{object.looses[object.looses.length - 1].lostDate | date}}</span>
+    <span *ngIf="object.lost">{{object.looses![object.looses!.length - 1].lostDate | date}}</span>
    </li>
 
    <li class="details-li">
@@ -80,6 +85,7 @@ Aux alentours de Strasbourg centre (France)  </li>
     Dernier scanne le 25/02/2013 à 9H32
   </li>
 </ol>
-</mat-card>
+</mat-card> -->
 </div>
+
 </div>

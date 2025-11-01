@@ -8,7 +8,7 @@ import { AuthService } from './AuthService.service';
   providedIn: 'root',
 })
 export class WebReqInterceptorService implements HttpInterceptor {
-  refreshingAccesstoken: boolean;
+  refreshingAccesstoken?: boolean;
 
   constructor(private authService: AuthService) {}
   intercept(
@@ -59,5 +59,5 @@ export class WebReqInterceptorService implements HttpInterceptor {
     return request;
   }
 
-  
+
 }

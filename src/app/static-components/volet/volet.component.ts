@@ -22,3 +22,6 @@ this.closeVoletOutput.emit()
 
   }
 }
+
+
+//     (click)="closeVoletOutput.emit()" -> event handler to add to a button to make it close on click

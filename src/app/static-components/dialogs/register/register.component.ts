@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
 
         if(this.formErrors.hasOwnProperty(input)) {
           console.log(1)
-          this.formErrors[input] =''
+          this.formErrors[input] = ''
           const control = form.get(input) //We take the control name
           console.log("control.errors")
           if(control && control.dirty && !control.valid) {

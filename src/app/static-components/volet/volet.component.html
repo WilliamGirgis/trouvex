@@ -1,6 +1,6 @@
 
 
-<div id="volet" [ngStyle]="{ right: isVoletUp ? '0' : '-21vw',boxShadow: isVoletUp ? '20px 0px 13px -10px  rgba(0,0,0,0.6)' : 'none' }">
+<div id="volet" [ngStyle]="{ width: isVoletUp ? '24vw' : '0',boxShadow: isVoletUp ? '-10px 0px 13px -10px  rgba(0,0,0,0.6)' : 'none' }">
 
   <div id="wrapper">
 
@@ -8,19 +8,19 @@
 
 <div id="list">
   <li>
-    <button [routerLinkActive]="'activated'" routerLink="secure"
-    (click)="closeVoletOutput.emit()"
-    >Enregistrer un objets
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sticky-fill" viewBox="0 0 16 16">
+    <button [routerLinkActive]="'activated'" routerLink="home"
+
+    ><span>Accueil</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--darkBlueTheme)" class="bi bi-sticky-fill" viewBox="0 0 16 16">
       <path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 15 8.586V2.5A1.5 1.5 0 0 0 13.5 1zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177z"/>
     </svg>
 
     </button>
   </li>
   <li>
-       <button [routerLinkActive]="'activated'" (click)="closeVoletOutput.emit()" routerLink="user" >
-        Liste de possesions
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+       <button [routerLinkActive]="'activated'"  routerLink="user" >
+        <span>Mes informations</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--darkBlueTheme)" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
           <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
         </svg>
 
@@ -28,10 +28,10 @@
 
   </li>
   <li>
-       <button [routerLinkActive]="'activated'" (click)="closeVoletOutput.emit()" routerLink="lost" >
-        Signaler une perte
+       <button [routerLinkActive]="'activated'"  routerLink="contact" >
+        <span>Contact</span>
 
-        <svg fill="currentColor" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        <svg fill="var(--darkBlueTheme)" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
            viewBox="0 0 300.46 300.46" xml:space="preserve">
         <g id="XMLID_1326_">
           <g>
@@ -58,10 +58,10 @@
        </button>
   </li>
   <li>
-    <button [routerLinkActive]="'activated'"    (click)="closeVoletOutput.emit()"
-    routerLink="find" >
-      Signaler une trouvaille
-      <svg fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    <button [routerLinkActive]="'activated'"
+    routerLink="map" >
+      <span>Rechercher</span>
+      <svg fill="var(--darkBlueTheme)" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
          width="800px" height="800px" viewBox="0 0 47 47" xml:space="preserve">
       <g>
         <g>

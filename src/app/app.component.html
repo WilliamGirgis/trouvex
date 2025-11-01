@@ -1,88 +1,116 @@
+<mat-card  class="container">
+  <h1 id="title">{{titleMapping.get(currentRoute)}}</h1>
 
-<mat-card class="container">
+  <button (click)="$event.stopPropagation()"  id="volet-button" type="button"  (click)="isVoletUp = !isVoletUp">
+    <svg class="close" *ngIf="isVoletUp"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+    </svg>
+        <svg class="open" fill="currentColor" *ngIf="!isVoletUp"  xmlns="http://www.w3.org/2000/svg" class="bi bi-list" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+        </svg>
 
-  <div id="top-bar">
-
-
-      <div id="logo-wrp">
-      <svg id="logo" fill="#72aeff"  version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.00 512.00" xml:space="preserve" stroke="#72aeff">
-        <g id="SVGRepo_bgCarrier" stroke-width="0">
-
-        </g>
-        <g  id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
-
-        </g>
-        <g id="SVGRepo_iconCarrier">
-          <g>
-            <g >
-              <g >
-                <path d="M59.179,185.707c2.411,5.355,8.683,7.723,14.101,5.355c5.376-2.411,7.765-8.725,5.355-14.101l-24.363-54.165 c-2.411-5.355,0-11.691,5.333-14.101l97.301-43.755c2.624-1.173,5.525-1.259,8.149-0.256c2.667,1.003,4.779,3.008,5.931,5.589 l51.904,115.413c1.813,3.968,5.696,6.315,9.771,6.315c1.451,0,2.944-0.299,4.373-0.939c5.376-2.411,7.765-8.725,5.355-14.101 L190.485,61.547c-3.52-7.787-9.835-13.76-17.835-16.789c-8-3.029-16.683-2.752-24.469,0.747L50.88,89.259 c-16.085,7.232-23.275,26.219-16.043,42.304L59.179,185.707z">
-                </path>
-                 <path  d="M285.931,184.341c1.323,4.544,5.504,7.659,10.219,7.659h175.68c4.736,0,8.896-3.115,10.219-7.659l18.816-64 c1.536-5.248-1.131-10.816-6.187-12.885c-5.077-2.027-10.88,0.021-13.44,4.843C477.141,120.021,459.563,128,437.333,128 c-24.427,0-42.667-11.264-42.667-21.333v-64C394.667,19.136,375.531,0,352,0c-23.531,0-42.667,19.136-42.667,42.667v10.667 C309.333,59.221,314.112,64,320,64s10.667-4.779,10.667-10.667V42.667c0-11.755,9.579-21.333,21.333-21.333 s21.333,9.579,21.333,21.333v64c0,10.069-18.24,21.333-42.667,21.333c-22.229,0-39.808-7.979-43.925-15.701 c-2.56-4.821-8.427-6.827-13.44-4.843c-5.056,2.069-7.723,7.637-6.187,12.885L285.931,184.341z">
-                 </path>
-        <path id="mve"  d="M490.667,213.333H21.333c-5.888,0-10.667,4.779-10.667,10.667v192c0,52.928,43.072,96,96,96h298.667 c52.928,0,96-43.072,96-96V224C501.333,218.112,496.555,213.333,490.667,213.333z M263.467,444.8 c-1.92,2.133-4.693,3.2-7.467,3.2c-2.773,0-5.547-1.067-7.467-3.2c-2.133-1.92-3.2-4.693-3.2-7.467 c0-2.773,1.067-5.547,3.2-7.467c4.053-4.053,10.88-4.053,14.933,0c2.133,1.92,3.2,4.693,3.2,7.467 C266.667,440.107,265.6,442.88,263.467,444.8z M266.709,376.299l-0.021,18.368c0,5.888-4.779,10.667-10.667,10.667 c-5.888,0-10.667-4.8-10.667-10.667L245.376,368c0-4.864,3.285-9.109,8-10.304l2.368-0.576 C271.701,353.451,288,347.115,288,328.021c0-16.171-14.357-29.333-32.021-29.333c-16.896,0-30.955,12.075-32,27.52 c-0.405,5.888-5.163,10.283-11.371,9.92c-5.867-0.405-10.325-5.483-9.92-11.371c1.813-26.603,25.237-47.424,53.312-47.424 c29.419,0,53.355,22.72,53.355,50.667C309.355,351.979,295.019,368.192,266.709,376.299z"></path> <path d="M78.528,113.109c-5.888,0-10.56,4.779-10.56,10.667s4.885,10.667,10.773,10.667s10.667-4.779,10.667-10.667 s-4.779-10.667-10.667-10.667H78.528z">
-      </path>
-     </g>
-     </g>
-     </g>
-    </g>
-  </svg>
+</button>
+  <div (click)="closeVoletOutput();menuLangSet = false"  id="top-bar">
 
 
-<h1><b>Trouvex</b></h1>
-      </div>
-
-
-      <mat-list >
+      <mat-list  >
 
         <div  [routerLinkActive]="'map'" routerLink="map" class="map-wrapper">
           <button type="button" >
-            <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="33px" height="33px"  fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16">
           <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z"/> </svg></button>
 
         </div>
 
-    <div [id]="menuLangSet ? 'lang-wrp-after' : 'null'" class="lang-wrapper">
+    <div (click)="$event.stopPropagation()"  [id]="menuLangSet ? 'lang-wrp-after' : 'null'" class="lang-wrapper">
       <button [id]="menuLangSet ? 'activated' :  'notActivated'" (click)="menuLangSet = !menuLangSet" class="lang-button" type="button" >LANG</button>
       <div *ngIf="menuLangSet" id="lang-subwrap" >
-        <span [style.backgroundColor]="selectedLang.toLowerCase() == lang.toLowerCase() ? 'var(--darkBlueTheme)' : undefined"  (click)="menuLangSet = !menuLangSet;selectedLang = lang" [style.animationDelay]="  i * 100 + 'ms'" *ngFor="let lang of langs;index as i">{{lang}}</span>
+        <span [style.backgroundColor]="selectedLang.toLowerCase() == lang.toLowerCase() ? 'var(--darkBlueTheme)' : undefined"  (click)="selectedLang = lang;menuLangSet = false" [style.animationDelay]="  i * 100 + 'ms'" *ngFor="let lang of langs;index as i">{{lang}}</span>
       </div>
     </div>
 
 
-    <button  type="button"  *ngIf="!isConnected"  (click)="openLoginForm()">   Connection</button>
+    <button  type="button"  *ngIf="!authService.isConnected"  (click)="openLoginForm()">   Connection</button>
 
-    <button type="button"  *ngIf="isConnected"  (click)="openLogoutDialog()">   Déconnection</button>
+    <button type="button"  *ngIf="authService.isConnected"  (click)="openLogoutDialog()">   Déconnection</button>
 
-<button type="button" *ngIf="isConnected && isAdmin"  routerLink="/admin">Espace administrateur</button>
+<button type="button" *ngIf="authService.isConnected && isAdmin"  routerLink="/admin">Espace administrateur</button>
 
-<button type="button" *ngIf="!isConnected "   (click)="openRegisterForm()">Inscription</button>
+<button type="button" *ngIf="!authService.isConnected "   (click)="openRegisterForm()">Inscription</button>
 
-<div>
-  <button id="volet-button" type="button" (click)="isVoletUp = !isVoletUp">
+<div  [class]="openTools ? 'open-tool-window' : null" id="tools-wrap">
+  <div id="search-area" [class]="searchOpened() ? 'search-opened' : 'search-closed'">
+    <form>
+      <mat-form-field>
+        <mat-label>Rechercher un element</mat-label>
+        <input matInput>
+    <mat-hint style="width: max-content;">(Clé, porte-feuille, téléphone, etc ...)</mat-hint>
+      </mat-form-field>
 
+    </form>
+    @if(selectedMarker) {
 
+        <mat-card id="selected-marker">
+          <mat-card-title>
+            {{selectedMarker.id}}
+          </mat-card-title>
+          <mat-card-content>
+            {{selectedMarker.location.latitude}}
+            {{selectedMarker.location.longitude}}
 
+          </mat-card-content>
 
-      <svg *ngIf="isVoletUp" [style.fill]="isVoletUp ? 'var(--darkBlueTheme)' : 'var(--lightBlueTheme)'" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+        </mat-card>
+    }
+  </div>
+
+  <div *ngIf="displayButton" id="signals-button-wrapper">
+    <svg id="closed-svg" (click)="openObjetFoundDialog()" width="800px" height="800px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--emojione-monotone" preserveAspectRatio="xMidYMid meet">
+    <g >
+    <path  d="M30.249 2.065C18.612 2.789 12.531 9.379 12 21.296h11.739c.147-4.128 2.451-7.214 6.741-7.669c4.211-.447 8.206.556 9.416 3.435c1.307 3.11-1.627 6.724-3.022 8.241c-2.582 2.813-6.776 4.865-8.95 7.9c-2.131 2.974-2.51 6.887-2.674 11.676h10.346c.145-3.062.349-5.995 1.742-7.898c2.266-3.092 5.65-4.541 8.486-6.983c2.709-2.334 5.559-5.147 6.043-9.501C53.32 7.466 42.683 1.289 30.249 2.065" >
+    </path>
+    <ellipse cx="30.515" cy="55.567" rx="6.532" ry="6.433" >
+    </ellipse>
+    </g>
+    </svg>
+    <svg id="opened-svg" (click)="openObjetLostDialog()"  width="800px" height="800px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>exclamation</title>
+    <path d="M10.656 8.864q0-2.208 1.568-3.776t3.776-1.568 3.776 1.568 1.6 3.776q0 0.256-0.064 0.448l-1.76 6.944q-0.096 1.408-1.12 2.368t-2.432 0.96q-1.376 0-2.4-0.928t-1.152-2.304q-0.32-0.96-0.672-2.112t-0.736-2.784-0.384-2.592zM12.416 24.928q0-1.472 1.056-2.496t2.528-1.056 2.528 1.056 1.056 2.496q0 1.504-1.056 2.528t-2.528 1.056-2.528-1.056-1.056-2.528z"></path>
+    </svg>
+    <svg [class]="searchOpened() ? 'activated' : null"  (click)="searchOpened.set(!searchOpened())"  id="search-svg"  viewBox="0 0 24 24" fill="var(--darkBlueTheme)" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14.5776 14.5419C15.5805 13.53 16.2 12.1373 16.2 10.6C16.2 7.50721 13.6928 5 10.6 5C7.50721 5 5 7.50721 5 10.6C5 13.6928 7.50721 16.2 10.6 16.2C12.1555 16.2 13.5628 15.5658 14.5776 14.5419ZM14.5776 14.5419L19 19M10.25 14.0167V14.25M10.25 12.6167C10.25 11.912 10.7096 11.2784 11.4106 11.0167L11.5 10.9833C12.255 10.7015 12.75 10.019 12.75 9.26013V9.11667C12.75 8.08574 11.8546 7.25 10.75 7.25C9.64543 7.25 8.75 8.08574 8.75 9.11667"
+      stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-
-      <svg  *ngIf="!isVoletUp" [style.fill]="isVoletUp ? 'var(--darkBlueTheme)' : 'var(--lightBlueTheme)'"  width="20" height="20" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd"  clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM16 9V7H8V9H16ZM8 17V15H16V17H8ZM16 11H8V13H16V11Z"/>
-        </svg>
-  </button>
 </div>
+
+
+
+@if(!openTools) {
+  <svg (click)="openTools = !openTools" id="tools-logo-closed" fill="currentColor"  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.135 6.89c.933-.725 1.707-.225 2.74.971.116.135.272-.023.361-.1.088-.078 1.451-1.305 1.518-1.361.066-.059.146-.169.041-.292a36.238 36.238 0 0 1-.743-.951c-1.808-2.365 4.946-3.969 3.909-3.994-.528-.014-2.646-.039-2.963-.004-1.283.135-2.894 1.334-3.705 1.893-1.061.726-1.457 1.152-1.522 1.211-.3.262-.048.867-.592 1.344-.575.503-.934.122-1.267.414-.165.146-.627.492-.759.607-.133.117-.157.314-.021.471 0 0 1.264 1.396 1.37 1.52.105.122.391.228.567.071.177-.156.632-.553.708-.623.078-.066-.05-.861.358-1.177zm5.708.517c-.12-.139-.269-.143-.397-.029L7.012 8.63a.289.289 0 0 0-.027.4l8.294 9.439c.194.223.53.246.751.053l.97-.813a.54.54 0 0 0 .052-.758L8.843 7.407zM19.902 3.39c-.074-.494-.33-.391-.463-.182-.133.211-.721 1.102-.963 1.506-.24.4-.832 1.191-1.934.41-1.148-.811-.749-1.377-.549-1.758.201-.383.818-1.457.907-1.59.089-.135-.015-.527-.371-.363-.357.164-2.523 1.025-2.823 2.26-.307 1.256.257 2.379-.85 3.494l-1.343 1.4 1.349 1.566 1.654-1.57c.394-.396 1.236-.781 1.998-.607 1.633.369 2.524-.244 3.061-1.258.482-.906.402-2.814.327-3.308zM2.739 17.053a.538.538 0 0 0 0 .758l.951.93c.208.209.538.121.746-.088l4.907-4.824-1.503-1.714-5.101 4.938z"/>
+  </svg>
+}
+@else  {
+  <svg (click)="openTools = !openTools;searchOpened.set(false)" fill="currentColor" id="tools-logo-open"  xmlns="http://www.w3.org/2000/svg"  viewBox="-0.5 0 25 25">
+    <path d="M3 21.32L21 3.32001" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3 3.32001L21 21.32" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+
+}
+
+
+</div>
+
+
     </mat-list>
   </div>
-    <div id="outlet">
 
-<router-outlet></router-outlet>
-</div>
+<router-outlet    (activate)="getRoute($event)"></router-outlet>
 
 </mat-card>
 
-<app-volet (closeVoletOutput)="closeVoletOutput()" [isVoletUp]="isVoletUp"></app-volet>
+<app-volet id="volet" (focus)="isVoletUp = false" (closeVoletOutput)="closeVoletOutput()" [isVoletUp]="isVoletUp"></app-volet>
 
 
 

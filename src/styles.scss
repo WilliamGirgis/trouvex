@@ -9,12 +9,33 @@
 }
 
 :root{
-  --menuHeight:12vh;
+  --menuHeight:7vh;
   --outletHeight:88vh;
+  --dragNDropHeight:250px;
   --lightBlueTheme:#7daff0;
+  --semiDarkBlueThem:rgba(14, 70, 161,0.7);
   --darkBlueTheme:#0c3370;
+  --violetThem:rgb(184, 68, 199);
+  --toolWrapperWidth: 150px;
+  --toolsLogoWidth: 55px;
+  --toolsLogoHeight: 55px
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+
   }
 
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgb(199, 205, 207);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    background: var(--darkBlueTheme);
+
+  }
 
 body {
 background-color: #72aeff;

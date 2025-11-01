@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AdminGuard  {
   constructor(private router: Router, private http: HttpClient) {}
-  temp: string;
+  temp?: string;
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -18,7 +18,7 @@ export class AdminGuard  {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.getAdmin(); 
+    return this.getAdmin();
   }
 
   async getAdmin(): Promise<boolean> {

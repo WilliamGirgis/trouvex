@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -9,12 +9,6 @@ describe('VoletComponent', () => {
   let component: VoletComponent;
   let fixture: ComponentFixture<VoletComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ VoletComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(VoletComponent);

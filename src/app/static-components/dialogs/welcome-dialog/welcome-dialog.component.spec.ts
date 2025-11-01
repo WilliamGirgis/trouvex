@@ -1,23 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { MatDialogRef } from '@angular/material/dialog';
+import { WelcomeDialogComponent } from './welcome-dialog.component'; // Replace with your component
 
-import { WelcomeDialogComponent } from './welcome-dialog.component';
-
-describe('WelcomeDialogComponent', () => {
-  let component: WelcomeDialogComponent;
-  let fixture: ComponentFixture<WelcomeDialogComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [WelcomeDialogComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(WelcomeDialogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+describe('MyDialogComponent', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [WelcomeDialogComponent],
+      providers: [
+        { provide: MatDialogRef, useValue: {} }, // ✅ Provide MatDialogRef
+      ]
+    });
   });
 
   it('should create', () => {
+    const fixture = TestBed.createComponent(WelcomeDialogComponent);
+    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 });

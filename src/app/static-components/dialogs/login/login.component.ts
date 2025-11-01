@@ -1,9 +1,9 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog,  MatDialogRef} from '@angular/material/dialog';
-import { HttpService } from 'src/app/services/http.service';
+import { HttpService } from '../../../services/http.service';
 import { catchError } from 'rxjs/operators';
-import { AuthService } from 'src/app/services/AuthService.service';
+import { AuthService } from '../../../services/AuthService.service';
 import { RegisterComponent } from '../register/register.component';
 import { WelcomeDialogComponent } from '../welcome-dialog/welcome-dialog.component';
 
@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
 

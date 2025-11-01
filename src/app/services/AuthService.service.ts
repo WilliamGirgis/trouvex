@@ -16,7 +16,7 @@ export class AuthService {
     private router: Router
   ) {}
 
-  isConnected:Boolean = !!localStorage.getItem('user-id')
+  isConnected:Boolean = false//!!localStorage.getItem('user-id')
 
   login(id: string, password: string) {
     return this.WebService.loginClient(id, password).pipe( // Créer la fonction loginClient
@@ -24,8 +24,8 @@ export class AuthService {
       tap((res: HttpResponse<any>) => {
         this.setSession(
           res.body._id,
-          res.headers.get('x-access-token'),
-          res.headers.get('x-refresh-token')
+          res.headers.get('x-access-token')!,
+          res.headers.get('x-refresh-token')!
         );
       })
     )
@@ -58,14 +58,14 @@ export class AuthService {
     return this.http
       .get('http://localhost:4200/user/users/me/access-Token', {
         headers: {
-          'x-refresh-token': localStorage.getItem('refresh-Token'),
-          '_id': localStorage.getItem('user-id'),
+          'x-refresh-token': localStorage.getItem('refresh-Token')!,
+          '_id': localStorage.getItem('user-id')!,
         },
         observe: 'response',
       })
       .pipe(
         tap((res: HttpResponse<any>) => {
-          this.setAccessToken(res.headers.get('x-access-token'));
+          this.setAccessToken(res.headers.get('x-access-token')!);
         }),
         catchError((err: any) => {
           this.logout();
