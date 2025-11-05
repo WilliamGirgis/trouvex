@@ -3,21 +3,21 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { VoletComponent } from './volet.component';
+import { SecureViewComponent } from './secureView.component';
 
-describe('VoletComponent', () => {
-  let component: VoletComponent;
-  let fixture: ComponentFixture<VoletComponent>;
+describe('SecureViewComponent', () => {
+  let component: SecureViewComponent;
+  let fixture: ComponentFixture<SecureViewComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ VoletComponent ]
+      declarations: [ SecureViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VoletComponent);
+    fixture = TestBed.createComponent(SecureViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

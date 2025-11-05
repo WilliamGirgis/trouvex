@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -9,6 +9,12 @@ describe('UserviewComponent', () => {
   let component: UserviewComponent;
   let fixture: ComponentFixture<UserviewComponent>;
 
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [ UserviewComponent ]
+    })
+    .compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(UserviewComponent);

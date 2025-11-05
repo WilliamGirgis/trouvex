@@ -15,20 +15,34 @@ import {MatInputModule } from '@angular/material/input';
 
 import {MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {CommonModule } from '@angular/common';
-import {HomeviewComponent } from './views/userview/client-views/homeview/homeview.component'
-
-import {ReactiveFormsModule,FormsModule} from '@angular/forms';
-import {HttpService} from './services/http.service';
-import { LoginComponent } from './static-components/dialogs/login/login.component'
+import {MenubarComponent } from './static-components/menubar/menubar.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {FindviewComponent } from './findview/findview.component';
+import {HomeviewComponent } from './homeview/homeview.component'
+import {FlexLayoutModule } from '@angular/flex-layout';
+import {FlexModule } from '@angular/flex-layout';
+import {MatCardModule} from '@angular/material/card'
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon'
+import {MatListModule} from '@angular/material/list'
+import {MatMenuModule} from '@angular/material/menu'
+import {HttpService} from 'src/app/services/http.service';
+import { LoginComponent } from './static-components/login/login.component'
+import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatDialog, MatDialogModule} from '@angular/material/dialog'
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import {WebReqInterceptorService} from './services/webReqinterceptor.service'
-import { AdminviewComponent } from './views/userview/adminview/adminview.component';
-import { AdminGuard } from './guards/admin-guard';
-import { AuthGuard } from './guards/AuthGuard';
-import { UserviewComponent } from './views/userview/client-views/client-info/userview.component';
-import { RegisterComponent } from './static-components/dialogs/register/register.component';
-import { WelcomeDialogComponent } from './static-components/dialogs/welcome-dialog/welcome-dialog.component';
-import { QrCodeDialogComponent } from './static-components/dialogs/qr-code-dialog/qr-code-dialog.component';
+import {WebReqInterceptorService} from 'src/app/services/webReqinterceptor.service'
+import { AdminviewComponent } from './adminview/adminview.component';
+import { AdminGuard } from 'src/app/guards/admin-guard';
+import { AuthGuard } from 'src/app/guards/AuthGuard';
+import { UserviewComponent } from './userview/userview.component';
+import {MatTableModule} from '@angular/material/table'
+import { FileUploadModule } from 'ng2-file-upload';
+import { MatRadioModule } from '@angular/material/radio';
+import { RegisterComponent } from './static-components/register/register.component';
+// import { SecureViewComponent } from './secureView/secureView.component';
 import { ContactViewComponent } from './contactView/contactView.component';
 import { LogoutDialogComponent } from './static-components/dialogs/logout-dialog/logout-dialog.component';
 import { ClientMapComponent } from './views/userview/client-views/client-map/client-map.component';
@@ -58,47 +72,52 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  {path:'find',component:FindviewComponent},
+  {path:'home',component:HomeviewComponent},
+  // {path:'secure',component:SecureViewComponent,canActivate:[AuthGuard]},
+  {path:'about',component:AboutViewComponent},
+  {path:'contact',component:ContactViewComponent},
+  {path:'admin',component:AdminviewComponent,canActivate:[AdminGuard]},
+  {path:'user',component:UserviewComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({ declarations: [
         AppComponent,
         VoletComponent,
+        MenubarComponent,
+        FindviewComponent,
         HomeviewComponent,
         AdminviewComponent,
+        UserviewComponent,
         LoginComponent,
         RegisterComponent,
+        // SecureViewComponent,
         ContactViewComponent,
-        LogoutDialogComponent,
-        ClientMapComponent,
-        WelcomeDialogComponent,
-        QrCodeDialogComponent,
-
+        AboutViewComponent
     ],
     exports: [],
-    bootstrap: [AppComponent], imports: [
-        BrowserModule,
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
         BrowserAnimationsModule,
-        RouterModule.forRoot(routes, { urlUpdateStrategy: 'deferred' }),
+        RouterModule.forRoot(routes, {}),
         CommonModule,
-        FormsModule,
-        MatFormFieldModule,
         MatButtonModule,
+        MatInputModule,
+        MatButtonToggleModule,
+        FlexLayoutModule,
+        FlexModule,
+        MatCardModule,
+        FormsModule,
         ReactiveFormsModule,
-        MatMenuModule,
         MatIconModule,
         MatListModule,
+        MatMenuModule,
+        MatToolbarModule,
         MatDialogModule,
-        MatInputModule,
-        MatCardModule,
-        MatTableModule,
-        MatOptionModule,
+        MatFormFieldModule,
         MatProgressSpinnerModule,
-        MatTooltipModule,
-        SaveItemDialogComponent,
-        FileUploadModule,
-        NgLeafletUniversalModule], providers: [HttpService, { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptorService, multi: true }, AdminGuard, AuthGuard, {
-            provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-            useValue: globalMatFormFieldOptions
-        }, provideHttpClient(withInterceptorsFromDi())] })
+        MatTableModule,
+        MatRadioModule,
+        ], providers: [HttpService, { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptorService, multi: true }, AdminGuard, AuthGuard, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}
 

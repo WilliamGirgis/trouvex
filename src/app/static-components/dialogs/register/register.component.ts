@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
-import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/internal/operators/map';
 
@@ -119,10 +119,46 @@ setTimeout(() =>{
 
   formErrors = { id:'' ,firstname: '', lastname: '', tel: '', email: '',country:'',password:'' };
 
+  subscribeForm:UntypedFormGroup = this.formBuilder.group({
 
+    id:['',[Validators.required,Validators.minLength(5)]],
+   firstname : ['',[Validators.required]],
+   lastname: ['', [Validators.required]],
+   tel : ['', [Validators.required],],
+   email: ['', [Validators.required,Validators.email]],
+   country: ['',[Validators.required]],
+   password: ['',[Validators.required,Validators.minLength(12)]]
+
+
+  }
+  );
   isValid = this.subscribeForm.valid
 
+  constructor(private formBuilder:UntypedFormBuilder,public dialogRef:MatDialogRef<RegisterComponent>,private http:HttpClient) {
 
+    this.subscribeForm.valueChanges.subscribe((data) => {
+      this.isValid = this.subscribeForm.valid
+ const form = this.subscribeForm
+
+      for(const input in this.formErrors) {
+
+        if(this.formErrors.hasOwnProperty(input)) {
+          console.log(1)
+          this.formErrors[input] =''
+          const control = form.get(input) //We take the control name
+          console.log("control.errors")
+          if(control && control.dirty && !control.valid) {
+            const messages = this.errorMessages[input]
+            for (const key in control.errors) {
+              if(control.errors.hasOwnProperty(key)) {
+                this.formErrors[input] += messages[key] + ' '
+              }
+            }
+          }
+        }
+      }
+    })
+   }
 
   ngOnInit(): void {
 

@@ -1,35 +1,17 @@
-import { AfterViewInit, Component, EventEmitter, OnInit, signal, Signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import { LoginComponent } from './static-components/dialogs/login/login.component';
-import { AuthService } from '../app/services/AuthService.service';
-import { RegisterComponent } from './static-components/dialogs/register/register.component';
-import { LogoutDialogComponent } from './static-components/dialogs/logout-dialog/logout-dialog.component';
-import { WelcomeDialogComponent } from './static-components/dialogs/welcome-dialog/welcome-dialog.component';
-import { SaveItemDialogComponent } from './static-components/dialogs/save-item-dialog-found/save-item-dialog-found.component';
-import { LostObject } from './shared/lostObjet';
-import { LostObjectService } from './services/lost-object.service';
-import { SaveItemLostDialogComponent } from './static-components/dialogs/save-item-lost-dialog/save-item-lost-dialog.component';
-import { ClientMapComponent } from './views/userview/client-views/client-map/client-map.component';
-import { UserviewComponent } from './views/userview/client-views/client-info/userview.component';
-import { HomeviewComponent } from './views/userview/client-views/homeview/homeview.component';
-import { map, startWith } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Marker } from 'ng-leaflet-universal';
+import { RouterOutlet } from '@angular/router';
+import { LoginComponent } from './static-components/login/login.component';
+import { AuthService } from 'src/app/services/AuthService.service';
+import { RegisterComponent } from './static-components/register/register.component';
 
-
-class TitleMapping {
-  title:string = ''
-
-
-}
 
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    animations: [],
     standalone: false
 })
 
