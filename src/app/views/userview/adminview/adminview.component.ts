@@ -72,7 +72,6 @@ export class AdminviewComponent implements OnInit {
 
   }
 
-  private formBuilder:FormBuilder = new FormBuilder()
   columnsToDisplay = ['ID', 'firstname', 'lastname', 'tel','email','country','Search'];
   saveUserForm:UntypedFormGroup = this.formBuilder.group({
 
