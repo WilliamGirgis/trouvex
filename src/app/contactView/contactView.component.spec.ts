@@ -14,7 +14,7 @@ describe('ContactViewComponent', () => {
       declarations: [ ContactViewComponent ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ContactViewComponent);
